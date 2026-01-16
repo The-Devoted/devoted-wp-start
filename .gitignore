@@ -1,5 +1,9 @@
+# Environment Variables
+.env
+
 # Wordpress - ignore core, configuration, examples, uploads and logs.
 # https://github.com/github/gitignore/blob/main/WordPress.gitignore
+# --------------------------
 
 # Core
 #
@@ -46,3 +50,43 @@ wp-config.php
 # Note: If you wish to whitelist themes,
 # uncomment the next line
 #/wp-content/themes
+# --------------------------
+
+# Composer
+# --------------------------
+# Ignore Composer packages.
+/vendor/
+/wordpress/vendor/
+
+# Ignore themes and plugins installed via Composer.
+/wordpress/wp-content/plugins/*
+!/wordpress/wp-content/plugins/README.md
+/wordpress/wp-content/themes/*
+!/wordpress/wp-content/themes/README.md
+
+
+# Ignore dependencies installed via npm.
+# --------------------------
+node_modules
+
+# Sass.
+# --------------------------
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
+
+# VSCode, linting, and developer preferences.
+# --------------------------
+/.vscode/
+.stylelintrc
+
+# OS generated files.
+# --------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db

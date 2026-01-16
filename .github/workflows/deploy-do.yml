@@ -1,0 +1,29 @@
+name: Deploy Site to Digital Ocean
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy to Production DO Droplet
+    runs-on: ubuntu-latest
+    steps:
+      - name: update via ssh
+        uses: appleboy/ssh-action@v1.2.3
+        with:
+          host: ${{ secrets.DO_DROPLET_HOST }}
+          username: ${{ secrets.DO_DROPLET_USERNAME }}
+          key: ${{ secrets.DO_DROPLET_SSH_KEY }}
+          port: ${{ secrets.DO_DROPLET_PORT }}
+          debug: true
+          script: |
+            cd devoted-wp-start
+            git checkout main
+            git pull origin main
+            docker compose down
+            docker compose up -d
+            docker exec wordpress composer update
