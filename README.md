@@ -2,6 +2,10 @@
 
 [The Devoted](https://www.the-devoted.com/)'s starter kit for WordPress.
 
+This project is hosted at [devoted-wp-start.the-devoted.dev](https://devoted-wp-start.the-devoted.dev/).
+
+View open issues and tasks on the [Project Baord](https://github.com/orgs/The-Devoted/projects/3).
+
 ## Development Environment and Technologies
 
 This project uses a [Docker](https://www.docker.com) development environment.
@@ -19,7 +23,7 @@ Using `docker compose` we create the following technology stack:
 
 ## Deployment
 
-When commits are made to the `[main]` branch, changes are automatically deployed to a Digital Ocean Droplet at ADD_DROPLET_URL_AFTER_SETUP.
+When commits are made to the `[main]` branch, changes are automatically deployed to [devoted-wp-start.the-devoted.dev](https://devoted-wp-start.the-devoted.dev/).
 
 The deployment action does the following:
 
@@ -39,7 +43,3 @@ If your update makes changes to container config, you must rebuild on the remote
 3. Rebuild containers from scratch: `docker compose build --no-cache`
 4. Restart the containers in detatched mode with no cache: `docker compose up -d --force-recreate`
 5. Check for Composer/dependency changes `docker exec wordpress composer update`
-
-## Local Development
-
-tk_local_notes
