@@ -1,6 +1,16 @@
 # Environment Variables
 .env
 
+# Local Utilities
+util.sh
+
+# Ignore database backups.
+/backups/db/database_backup*.sql
+/backups/db/database_to_import.sql
+
+# Ignore asset backups.
+/backups/assets/*
+
 # Wordpress - ignore core, configuration, examples, uploads and logs.
 # https://github.com/github/gitignore/blob/main/WordPress.gitignore
 # --------------------------
