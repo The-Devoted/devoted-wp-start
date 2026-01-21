@@ -1,0 +1,9 @@
+{
+    "version": 3,
+	"settings": {
+		"layout": {
+			"contentSize": "48rem",
+			"wideSize": "70rem"
+		}
+	}
+}
