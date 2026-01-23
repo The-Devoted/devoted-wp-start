@@ -5,6 +5,170 @@
 		"layout": {
 			"contentSize": "48rem",
 			"wideSize": "70rem"
-		}
+		},
+        "color": {
+            "palette": [
+                {
+                    "name": "Primary Lightest",
+                    "slug": "primary-lightest",
+                    "color": "#EAF8F1"
+                },
+                {
+                    "name": "Primary Lighter",
+                    "slug": "primary-lighter",
+                    "color": "#D7F3E6"
+                },
+                {
+                    "name": "Primary Light",
+                    "slug": "primary-light",
+                    "color": "#AFECD0"
+                },
+                {
+                    "name": "Primary Base",
+                    "slug": "primary-base",
+                    "color": "#88D6B3"
+                },
+                {
+                    "name": "Primary Dark",
+                    "slug": "primary-dark",
+                    "color": "#62B791"
+                },
+                {
+                    "name": "Primary Darker",
+                    "slug": "primary-Darker",
+                    "color": "#448C6B"
+                },
+                {
+                    "name": "Primary Darkest",
+                    "slug": "primary-darkest",
+                    "color": "#3F6453"
+                },
+                {
+                    "name": "Secondary Lightest",
+                    "slug": "secondary-lightest",
+                    "color": "#FCE2EF"
+                },
+                {
+                    "name": "Secondary Lighter",
+                    "slug": "secondary-lighter",
+                    "color": "#FEAFD7"
+                },
+                {
+                    "name": "Secondary Light",
+                    "slug": "secondary-light",
+                    "color": "#EF76B2"
+                },
+                {
+                    "name": "Secondary Base",
+                    "slug": "secondary-base",
+                    "color": "#DA3386"
+                },
+                {
+                    "name": "Secondary Dark",
+                    "slug": "secondary-dark",
+                    "color": "#A9105C"
+                },
+                {
+                    "name": "Secondary Darker",
+                    "slug": "secondary-Darker",
+                    "color": "#70033A"
+                },
+                {
+                    "name": "Secondary Darkest",
+                    "slug": "secondary-darkest",
+                    "color": "#4D0027"
+                },
+                {
+                    "name": "Neutral White",
+                    "slug": "neutral-white",
+                    "color": "#000"
+                },
+                {
+                    "name": "Neutral Lightest",
+                    "slug": "neutral-lightest",
+                    "color": "#DEDEDE"
+                },
+                {
+                    "name": "Neutral Lighter",
+                    "slug": "neutral-lighter",
+                    "color": "#BBBBBB"
+                },
+                {
+                    "name": "Neutral Light",
+                    "slug": "neutral-light",
+                    "color": "#999999"
+                },
+                {
+                    "name": "Neutral Base",
+                    "slug": "neutral-base",
+                    "color": "#808080"
+                },
+                {
+                    "name": "Neutral Dark",
+                    "slug": "neutral-dark",
+                    "color": "#555555"
+                },
+                {
+                    "name": "Neutral Darker",
+                    "slug": "neutral-Darker",
+                    "color": "#333333"
+                },
+                {
+                    "name": "Neutral Darkest",
+                    "slug": "neutral-darkest",
+                    "color": "#222222"
+                },
+                {
+                    "name": "Neutral Black",
+                    "slug": "neutral-black",
+                    "color": "#000000"
+                },
+                {
+                    "name": "Utility Error Light",
+                    "slug": "utility-error-light",
+                    "color": "#EAA6A6"
+                },
+                {
+                    "name": "Utility Error Base",
+                    "slug": "utility-error-base",
+                    "color": "#B30F0F"
+                },
+                {
+                    "name": "Utility Error Dark",
+                    "slug": "utility-error-dark",
+                    "color": "#630202"
+                },
+                {
+                    "name": "Utility Warning Light",
+                    "slug": "utility-warning-light",
+                    "color": "#F1E1B4"
+                },
+                {
+                    "name": "Utility Warning Base",
+                    "slug": "utility-warning-base",
+                    "color": "#DEAB14"
+                },
+                {
+                    "name": "Utility Warning Dark",
+                    "slug": "utility-warning-dark",
+                    "color": "#8A6904"
+                },
+                {
+                    "name": "Utility Success Light",
+                    "slug": "utility-success-light",
+                    "color": "#A9D1A6"
+                },
+                {
+                    "name": "Utility Success Base",
+                    "slug": "utility-success-base",
+                    "color": "#379E2D"
+                },
+                {
+                    "name": "Utility Success Dark",
+                    "slug": "utility-success-dark",
+                    "color": "#095402"
+                }
+            ]
+        }
 	}
 }
