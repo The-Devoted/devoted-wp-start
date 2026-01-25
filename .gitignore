@@ -11,6 +11,9 @@ util.sh
 # Ignore asset backups.
 /backups/assets/*
 
+# Ignore Caddy file server config on staging
+Caddyfile
+
 # Wordpress - ignore core, configuration, examples, uploads and logs.
 # https://github.com/github/gitignore/blob/main/WordPress.gitignore
 # --------------------------
