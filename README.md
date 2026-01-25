@@ -2,9 +2,11 @@
 
 [The Devoted](https://www.the-devoted.com/)'s starter kit for WordPress.
 
-This project is hosted at [devoted-wp-start.the-devoted.dev](https://devoted-wp-start.the-devoted.dev/).
+This project is hosted at
+[devoted-wp-start.the-devoted.dev](https://devoted-wp-start.the-devoted.dev/).
 
-View open issues and tasks on the [Project Baord](https://github.com/orgs/The-Devoted/projects/3).
+View open issues and tasks on the [Project
+Baord](https://github.com/orgs/The-Devoted/projects/3).
 
 ## Development Environment and Technologies
 
@@ -19,11 +21,14 @@ Using `docker compose` we create the following technology stack:
 | Package Management | [Composer](https://getcomposer.org/) | [Composer Docker Images](https://hub.docker.com/r/composer/composer): same as official but with faster releases |
 | Testing Environtment | [Tugboat](https://www.tugboatqa.com/) | *N/A* |
 
-<i>*Specific versions or tags for Docker images are configured via environment variables.</i>
+<i>*Specific versions or tags for Docker images are configured via environment
+variables.</i>
 
 ## Deployment
 
-When commits are made to the `[main]` branch, changes are automatically deployed to [devoted-wp-start.the-devoted.dev](https://devoted-wp-start.the-devoted.dev/).
+When commits are made to the `[main]` branch, changes are automatically deployed
+to
+[devoted-wp-start.the-devoted.dev](https://devoted-wp-start.the-devoted.dev/).
 
 The deployment action does the following:
 
@@ -34,9 +39,12 @@ The deployment action does the following:
 
 ### Container Changes on Remote
 
-The deployment workflow does **not** currently check for changes to `Dockerfile`s, nor will it automatically rebuild the containers on the remote if necessary.
+The deployment workflow does **not** currently check for changes to
+`Dockerfile`s, nor will it automatically rebuild the containers on the remote if
+necessary.
 
-If your update makes changes to container config, you must rebuild on the remote manually:
+If your update makes changes to container config, you must rebuild on the remote
+manually:
 
 1. SSH to the remote: `ssh devoted-wp-start@host_goes_here`
 2. Stop the containers: `docker compose down`

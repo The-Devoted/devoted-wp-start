@@ -1,38 +1,38 @@
 {
-  "name": "wondermart/jslaughter",
-  "version": "0.0.1",
-  "description": "WordPress site for jslaughter.net",
-  "authors": [
-      {
-          "name": "Jenny Slaughter",
-          "email": "wondermart@gmail.com"
-      }
-  ],
-  "repositories": {
-      "wppackagist": {
-          "type": "composer",
-          "url": "https://wpackagist.org"
-      }
-  },
-  "extra": {
-    "installer-paths": {
-        "wp-content/plugins/{$name}": [
-            "type:wordpress-plugin"
-        ],
-        "wp-content/themes/{$name}": [
-            "type:wordpress-theme"
-        ],
-        "wp-content/mu-plugins/{$name}": [
-            "type:wordpress-muplugin"
-        ]
-    }
-  },
-  "config": {
+    "name": "wondermart/jslaughter",
+    "version": "0.0.1",
+    "description": "WordPress site for jslaughter.net",
+    "authors": [
+        {
+            "name": "Jenny Slaughter",
+            "email": "wondermart@gmail.com"
+        }
+    ],
+    "repositories": {
+        "wppackagist": {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    },
+    "extra": {
+        "installer-paths": {
+            "wp-content/plugins/{$name}": [
+                "type:wordpress-plugin"
+            ],
+            "wp-content/themes/{$name}": [
+                "type:wordpress-theme"
+            ],
+            "wp-content/mu-plugins/{$name}": [
+                "type:wordpress-muplugin"
+            ]
+        }
+    },
+    "config": {
     "allow-plugins": {
-      "composer/installers": true
+        "composer/installers": true
     }
-  },
-  "require": {
-    "wpackagist-theme/twentytwentyfive": "*"
-  }
+    },
+    "require": {
+        "wpackagist-theme/twentytwentyfive": "*"
+    }
 }
