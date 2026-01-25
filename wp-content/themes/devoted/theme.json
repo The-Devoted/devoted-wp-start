@@ -270,6 +270,13 @@
                     "size": "5rem"
                 }
             ]
+        },
+        "custom": {
+            "line-height": {
+				"body": 1.6,
+				"heading": 1.2,
+				"heading-large": 1.3
+			}
         }
 	},
     "styles": {
@@ -279,7 +286,8 @@
 		},
         "typography": {
 			"fontFamily": "var(--wp--preset--font-family--font-primary)",
-            "fontSize": "var(--wp--preset--font-size--medium)"
+            "fontSize": "var(--wp--preset--font-size--medium)",
+            "lineHeight": "var(--wp--custom--line-height--body)"
 		}
     }
 }
