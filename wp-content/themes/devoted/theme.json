@@ -169,12 +169,54 @@
                     "color": "#095402"
                 }
             ]
+        },
+        "typography": {
+            "fontFamilies": [
+                {
+                    "name": "Font Primary",
+                    "slug": "font-primary",
+                    "fontFamily": "Cormorant Garamond, serif",
+                    "fontFace": [
+						{
+							"fontDisplay": "block",
+							"fontFamily": "Cormorant Garamond",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "400 700",
+							"src": [ "file:./assets/fonts/CormorantGaramond-VariableFont.woff2" ]
+						}
+					]
+                },
+                {
+                    "name": "Font Secondary",
+                    "slug": "font-secondary",
+                    "fontFamily": "Titillium Web, serif",
+                    "fontFace": [
+						{
+							"fontDisplay": "block",
+							"fontFamily": "Titillium Web",
+							"fontStretch": "normal",
+							"fontStyle": "normal",
+							"fontWeight": "900",
+							"src": [ "file:./assets/fonts/TitilliumWeb-Black.woff2.woff2" ]
+						}
+					]
+                },
+                {
+                    "name": "Font Tertiary",
+                    "slug": "font-tertiary",
+                    "fontFamily": "Andale Mono, Cascadia Code, mono"
+                }
+            ]
         }
 	},
     "styles": {
 		"color": {
 			"background": "var(--wp--preset--color--neutral-white)",
 			"text": "var(--wp--preset--color--neutral-darkest)"
+		},
+        "typography": {
+			"fontFamily": "var(--wp--preset--font-family--font-primary)"
 		}
     }
 }
