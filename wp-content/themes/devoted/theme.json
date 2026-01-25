@@ -278,7 +278,8 @@
 			"text": "var(--wp--preset--color--neutral-darkest)"
 		},
         "typography": {
-			"fontFamily": "var(--wp--preset--font-family--font-primary)"
+			"fontFamily": "var(--wp--preset--font-family--font-primary)",
+            "fontSize": "var(--wp--preset--font-size--medium)"
 		}
     }
 }
