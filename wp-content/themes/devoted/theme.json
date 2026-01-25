@@ -207,6 +207,68 @@
                     "slug": "font-tertiary",
                     "fontFamily": "Andale Mono, Cascadia Code, mono"
                 }
+            ],
+            "fontSizes": [
+                {
+                    "name": "Double Extra Small",
+                    "slug": "double-extra-small",
+                    "size": "0.8rem"
+                },
+                {
+                    "name": "Extra Small",
+                    "slug": "extra-small",
+                    "size": "0.9rem"
+                },
+                {
+                    "name": "Small",
+                    "slug": "small",
+                    "size": "1rem"
+                },
+                {
+                    "name": "Medium",
+                    "slug": "medium",
+                    "size": "1.8rem"
+                },
+                {
+                    "name": "Large",
+                    "slug": "large",
+                    "size": "2rem"
+                },
+                {
+                    "name": "Extra Large",
+                    "slug": "extra-large",
+                    "size": "2.6rem"
+                },
+                {
+                    "name": "Heading 6",
+                    "slug": "heading6",
+                    "size": "2.8rem"
+                },
+                {
+                    "name": "Heading 5",
+                    "slug": "heading5",
+                    "size": "3rem"
+                },
+                {
+                    "name": "Heading 4",
+                    "slug": "heading4",
+                    "size": "3.6rem"
+                },
+                {
+                    "name": "Heading 3",
+                    "slug": "heading3",
+                    "size": "4.2rem"
+                },
+                {
+                    "name": "Heading 2",
+                    "slug": "heading2",
+                    "size": "4.6rem"
+                },
+                {
+                    "name": "Heading 1",
+                    "slug": "heading1",
+                    "size": "5rem"
+                }
             ]
         }
 	},
