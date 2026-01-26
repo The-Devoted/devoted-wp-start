@@ -8,12 +8,17 @@
             "email": "wondermart@gmail.com"
         }
     ],
-    "repositories": {
-        "wppackagist": {
+    "repositories": [
+        {
+            "name": "wpackagist",
             "type": "composer",
             "url": "https://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url":"https://connect.advancedcustomfields.com"
         }
-    },
+    ],
     "extra": {
         "installer-paths": {
             "wp-content/plugins/{$name}": [
