@@ -8,12 +8,17 @@
             "email": "wondermart@gmail.com"
         }
     ],
-    "repositories": {
-        "wppackagist": {
+    "repositories": [
+        {
+            "name": "wpackagist",
             "type": "composer",
             "url": "https://wpackagist.org"
+        },
+        {
+            "type": "composer",
+            "url":"https://connect.advancedcustomfields.com"
         }
-    },
+    ],
     "extra": {
         "installer-paths": {
             "wp-content/plugins/{$name}": [
@@ -33,6 +38,10 @@
     }
     },
     "require": {
-        "wpackagist-theme/twentytwentyfive": "*"
+        "wpackagist-plugin/wp-smushit": "^3.23",
+        "wpackagist-plugin/filebird": "^6.5",
+        "wpengine/advanced-custom-fields-pro": "^6.7",
+        "wpackagist-plugin/melapress-login-security": "^2.3",
+        "wpackagist-plugin/seo-by-rank-math": "^1.0"
     }
 }
