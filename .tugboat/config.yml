@@ -76,7 +76,7 @@ services:
         - mkdir -p "${DOCROOT}/wp-content/uploads" || /bin/true
 
         # Fetch an existing assets archive from the development server.
-        - scp -s mdhumanities@206.189.234.213:asset_backups/assets.tar.gz /tmp/assets.tar.gz
+        - scp -s ${DO_DROPLET_USERNAME}@${DO_DROPLET_HOST}:backup_assets/assets.tar.gz /tmp/assets.tar.gz
         - tar -C ${DOCROOT}/wp-content/uploads -zxf /tmp/assets.tar.gz
 
         # After placing the files, fix file ownership and harden permissions.
@@ -120,7 +120,7 @@ services:
         # Import a database.
 
         # Fetch an existing database backup from the development server.
-        - scp ${DO_DROPLET_USERNAME}@${DO_DROPLET_HOST}:db_backups/database_backup_latest.sql /tmp/database_backup_latest.sql
+        - scp ${DO_DROPLET_USERNAME}@${DO_DROPLET_HOST}:backup_db/database_backup_latest.sql /tmp/database_backup_latest.sql
 
         # Perform url replacement in db to ensure links work within the preview.
         - sed -i "s/${DOMAIN_NAME}/${TUGBOAT_DEFAULT_SERVICE_URL_HOST}/g" /tmp/database_backup_latest.sql
