@@ -61,6 +61,7 @@ services:
         #  If you rarely modify your composer.json file, this line can be moved
         #  to the `init` phase to speed up refreshes and rebuilds that use base
         #  previews.
+        - composer update --optimize-autoloader
         - composer install --optimize-autoloader
 
         # Include our custom WordPress config.
