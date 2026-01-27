@@ -43,7 +43,7 @@ services:
         # Use wp-cil to download & install a version of WordPress for Tugboat to
         # serve within the preview. First, download a wp version that matches
         # our project...
-        - wp core download --version=6.8
+        - wp core download --version=6.9
 
         # wp-cli expects a wp-config file even though Tugboat will overwrite it.
         # Copy one from our Tugboat config to run the install.
