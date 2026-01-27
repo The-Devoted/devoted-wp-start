@@ -52,9 +52,6 @@ services:
         # Install wordpress via wp-cli.
         - wp core install --url=example.com --title=Tugboat --admin_user=admin --admin_email=jenny@the-devoted.com --skip-email
 
-        # Initially install Composer dependencies
-        - php composer.phar update
-
       # The UPDATE phase is for importing assets and dependencies.
       # When you refresh a Tugboat Preview, the process starts here, skipping `init`.
       update:
