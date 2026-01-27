@@ -19,6 +19,7 @@
 			"wideSize": "70rem"
 		},
         "color": {
+            "defaultPalette": false,
             "palette": [
                 {
                     "name": "Primary Lightest",
