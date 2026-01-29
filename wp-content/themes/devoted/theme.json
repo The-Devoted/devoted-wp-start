@@ -19,6 +19,9 @@
 			"contentSize": "48rem",
 			"wideSize": "70rem"
 		},
+        "spacing": {
+			"units": [ "rem","vw","vh"]
+		},
         "color": {
             "defaultPalette": false,
             "palette": [
