@@ -23,6 +23,7 @@
         "spacing": {
 			"units": [ "rem","vw","vh"]
 		},
+        "useRootPaddingAwareAlignments": true,
         "color": {
             "defaultPalette": false,
             "palette": [
