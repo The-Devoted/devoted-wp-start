@@ -14,6 +14,7 @@
         }
     ],
 	"settings": {
+        "appearanceTools": true,
 		"layout": {
 			"contentSize": "48rem",
 			"wideSize": "70rem"
