@@ -17,7 +17,8 @@
         "appearanceTools": true,
 		"layout": {
 			"contentSize": "48rem",
-			"wideSize": "70rem"
+			"wideSize": "70rem",
+            "allowCustomContentAndWideSize": false
 		},
         "spacing": {
 			"units": [ "rem","vw","vh"]
