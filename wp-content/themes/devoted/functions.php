@@ -24,8 +24,11 @@ if ( ! function_exists( 'devoted_setup' ) ) {
 		// Enqueue editor stylesheet.
 		add_editor_style( get_template_directory_uri() . '/style.css' );
 
-		// Enable excerpts for Pages
+		// Enable excerpts for Pages.
 		add_post_type_support( 'page', 'excerpt' );
+
+		// Disable WP core patterns.
+		remove_theme_support( 'core-block-patterns' );
 
 	}
 }

@@ -14,10 +14,16 @@
         }
     ],
 	"settings": {
+        "appearanceTools": true,
 		"layout": {
 			"contentSize": "48rem",
-			"wideSize": "70rem"
+			"wideSize": "70rem",
+            "allowCustomContentAndWideSize": false
 		},
+        "spacing": {
+			"units": [ "rem","vw","vh"]
+		},
+        "useRootPaddingAwareAlignments": true,
         "color": {
             "defaultPalette": false,
             "palette": [
@@ -290,6 +296,13 @@
 				"heading": 1.2,
 				"heading-large": 1.3
 			}
+        },
+        "blocks": {
+            "core/image": {
+                "lightbox": {
+                    "allowEditing": true
+                }
+            }
         }
 	},
     "styles": {
