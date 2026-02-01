@@ -90,37 +90,37 @@
                 {
                     "name": "Primary Dark",
                     "slug": "primary-dark",
-                    "color": "#62B791"
+                    "color": "#62B7A4"
                 },
                 {
                     "name": "Primary Darker",
                     "slug": "primary-Darker",
-                    "color": "#448C6B"
+                    "color": "#288A78"
                 },
                 {
                     "name": "Primary Darkest",
                     "slug": "primary-darkest",
-                    "color": "#3F6453"
+                    "color": "#0A5E4A"
                 },
                 {
                     "name": "Secondary Lightest",
                     "slug": "secondary-lightest",
-                    "color": "#FCE2EF"
+                    "color": "#FAE6FF"
                 },
                 {
                     "name": "Secondary Lighter",
                     "slug": "secondary-lighter",
-                    "color": "#FEAFD7"
+                    "color": "#F3C3F3"
                 },
                 {
                     "name": "Secondary Light",
                     "slug": "secondary-light",
-                    "color": "#EF76B2"
+                    "color": "#DB99DB"
                 },
                 {
                     "name": "Secondary Base",
                     "slug": "secondary-base",
-                    "color": "#DA3386"
+                    "color": "#9E589E"
                 },
                 {
                     "name": "Secondary Dark",
@@ -135,7 +135,42 @@
                 {
                     "name": "Secondary Darkest",
                     "slug": "secondary-darkest",
-                    "color": "#4D0027"
+                    "color": "#420952"
+                },
+                {
+                    "name": "Tertiary Lightest",
+                    "slug": "tertiary-lightest",
+                    "color": "#FFF6ED"
+                },
+                {
+                    "name": "Tertiary Lighter",
+                    "slug": "tertiary-lighter",
+                    "color": "#FFE4C6"
+                },
+                {
+                    "name": "Tertiary Light",
+                    "slug": "tertiary-light",
+                    "color": "#FFC78C"
+                },
+                {
+                    "name": "Tertiary Base",
+                    "slug": "tertiary-base",
+                    "color": "#FFAE57"
+                },
+                {
+                    "name": "Tertiary Dark",
+                    "slug": "tertiary-dark",
+                    "color": "#FF982A"
+                },
+                {
+                    "name": "Tertiary Darker",
+                    "slug": "tertiary-Darker",
+                    "color": "#D87000"
+                },
+                {
+                    "name": "Tertiary Darkest",
+                    "slug": "tertiary-darkest",
+                    "color": "#783E00"
                 },
                 {
                     "name": "Neutral White",
@@ -145,37 +180,37 @@
                 {
                     "name": "Neutral Lightest",
                     "slug": "neutral-lightest",
-                    "color": "#DEDEDE"
+                    "color": "#D5DAE6"
                 },
                 {
                     "name": "Neutral Lighter",
                     "slug": "neutral-lighter",
-                    "color": "#BBBBBB"
+                    "color": "#B0B8CB"
                 },
                 {
                     "name": "Neutral Light",
                     "slug": "neutral-light",
-                    "color": "#999999"
+                    "color": "#8E96AA"
                 },
                 {
                     "name": "Neutral Base",
                     "slug": "neutral-base",
-                    "color": "#808080"
+                    "color": "#6E7989"
                 },
                 {
                     "name": "Neutral Dark",
                     "slug": "neutral-dark",
-                    "color": "#555555"
+                    "color": "#4E5563"
                 },
                 {
                     "name": "Neutral Darker",
                     "slug": "neutral-Darker",
-                    "color": "#333333"
+                    "color": "#303646"
                 },
                 {
                     "name": "Neutral Darkest",
                     "slug": "neutral-darkest",
-                    "color": "#222222"
+                    "color": "#0A152F"
                 },
                 {
                     "name": "Neutral Black",
