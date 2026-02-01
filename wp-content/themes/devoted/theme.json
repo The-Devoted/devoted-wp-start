@@ -21,8 +21,9 @@
             "allowCustomContentAndWideSize": false
 		},
         "spacing": {
-			"units": [ "rem","vw","vh"],
             "defaultSpacingSizes": false,
+            "blockGap": true,
+			"units": [ "rem","vw","vh"],
             "spacingSizes": [
                 {
                     "name": "2x Small",
@@ -348,6 +349,9 @@
 			"background": "var(--wp--preset--color--neutral-white)",
 			"text": "var(--wp--preset--color--neutral-darkest)"
 		},
+        "spacing": {
+            "blockGap": "var(--wp--preset--spacing--medium)"
+        },
         "typography": {
 			"fontFamily": "var(--wp--preset--font-family--font-primary)",
             "fontSize": "var(--wp--preset--font-size--medium)",
