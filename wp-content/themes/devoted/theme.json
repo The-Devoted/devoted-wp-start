@@ -219,6 +219,18 @@
                     "slug": "neutral-black",
                     "color": "#000000"
                 }
+            ],
+            "gradients": [
+                {
+                    "name": "Primary Base to Darker",
+                    "slug": "primary-base-to-darker",
+                    "gradient": "linear-gradient(to bottom right, var(--wp--preset--color--primary-base),var(--wp--preset--color--primary-darker))"
+                },
+                {
+                    "name": "Secondary Base to Darker",
+                    "slug": "secondary-base-to-darker",
+                    "gradient": "linear-gradient(to bottom right, var(--wp--preset--color--secondary-base),var(--wp--preset--color--secondary-darker))"
+                }
             ]
         },
         "typography": {
