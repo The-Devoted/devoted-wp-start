@@ -21,6 +21,7 @@
             "allowCustomContentAndWideSize": false
 		},
         "spacing": {
+            "customSpacingSize": false,
             "defaultSpacingSizes": false,
             "blockGap": true,
 			"units": [ "rem","vw","vh"],
