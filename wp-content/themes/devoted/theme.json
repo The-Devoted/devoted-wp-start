@@ -25,8 +25,8 @@
             "defaultSpacingSizes": false,
             "spacingSizes": [
                 {
-                    "name": "Double Extra Small",
-                    "slug": "double-extra-small",
+                    "name": "2x Small",
+                    "slug": "2x-small",
                     "size": "0.4rem"
                 },
                 {
@@ -55,8 +55,8 @@
                     "size": "3rem"
                 },
                 {
-                    "name": "Double Extra Large",
-                    "slug": "double-extra-large",
+                    "name": "2x Large",
+                    "slug": "2x-large",
                     "size": "4rem"
                 }
             ]
@@ -267,8 +267,8 @@
             ],
             "fontSizes": [
                 {
-                    "name": "Double Extra Small",
-                    "slug": "double-extra-small",
+                    "name": "2x Small",
+                    "slug": "2x-small",
                     "size": "0.8rem"
                 },
                 {
