@@ -65,7 +65,9 @@
 		},
         "useRootPaddingAwareAlignments": true,
         "color": {
+            "customDuotone": false,
             "customGradient": false,
+            "defaultDuotone": false,
             "defaultGradients": false,
             "defaultPalette": false,
             "palette": [
