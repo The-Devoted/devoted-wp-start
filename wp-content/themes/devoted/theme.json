@@ -350,7 +350,11 @@
 			"text": "var(--wp--preset--color--neutral-darkest)"
 		},
         "spacing": {
-            "blockGap": "var(--wp--preset--spacing--medium)"
+            "blockGap": "var(--wp--preset--spacing--medium)",
+            "padding": {
+                "left": "var(--wp--preset--font-size--medium)",
+                "right": "var(--wp--preset--font-size--medium)"
+            }
         },
         "typography": {
 			"fontFamily": "var(--wp--preset--font-family--font-primary)",
