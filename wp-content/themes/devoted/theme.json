@@ -21,7 +21,45 @@
             "allowCustomContentAndWideSize": false
 		},
         "spacing": {
-			"units": [ "rem","vw","vh"]
+			"units": [ "rem","vw","vh"],
+            "defaultSpacingSizes": false,
+            "spacingSizes": [
+                {
+                    "name": "Double Extra Small",
+                    "slug": "double-extra-small",
+                    "size": "0.4rem"
+                },
+                {
+                    "name": "Extra Small",
+                    "slug": "extra-small",
+                    "size": "0.8rem"
+                },
+                {
+                    "name": "Small",
+                    "slug": "small",
+                    "size": "1.2rem"
+                },
+                {
+                    "name": "Medium",
+                    "slug": "medium",
+                    "size": "1.8rem"
+                },
+                {
+                    "name": "Large",
+                    "slug": "large",
+                    "size": "2.2rem"
+                },
+                {
+                    "name": "Extra Large",
+                    "slug": "extra-large",
+                    "size": "3rem"
+                },
+                {
+                    "name": "Double Extra Large",
+                    "slug": "double-extra-large",
+                    "size": "4rem"
+                }
+            ]
 		},
         "useRootPaddingAwareAlignments": true,
         "color": {
