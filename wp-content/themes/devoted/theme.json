@@ -65,6 +65,8 @@
 		},
         "useRootPaddingAwareAlignments": true,
         "color": {
+            "customGradient": false,
+            "defaultGradients": false,
             "defaultPalette": false,
             "palette": [
                 {
