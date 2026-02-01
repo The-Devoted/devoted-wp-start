@@ -27,7 +27,7 @@
             "spacingSizes": [
                 {
                     "name": "2x Small",
-                    "slug": "2x-small",
+                    "slug": "two-x-small",
                     "size": "0.4rem"
                 },
                 {
@@ -57,7 +57,7 @@
                 },
                 {
                     "name": "2x Large",
-                    "slug": "2x-large",
+                    "slug": "two-x-large",
                     "size": "4rem"
                 }
             ]
@@ -269,7 +269,7 @@
             "fontSizes": [
                 {
                     "name": "2x Small",
-                    "slug": "2x-small",
+                    "slug": "two-x-small",
                     "size": "0.8rem"
                 },
                 {
