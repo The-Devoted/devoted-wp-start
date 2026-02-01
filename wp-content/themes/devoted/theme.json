@@ -216,51 +216,6 @@
                     "name": "Neutral Black",
                     "slug": "neutral-black",
                     "color": "#000000"
-                },
-                {
-                    "name": "Utility Error Light",
-                    "slug": "utility-error-light",
-                    "color": "#EAA6A6"
-                },
-                {
-                    "name": "Utility Error Base",
-                    "slug": "utility-error-base",
-                    "color": "#B30F0F"
-                },
-                {
-                    "name": "Utility Error Dark",
-                    "slug": "utility-error-dark",
-                    "color": "#630202"
-                },
-                {
-                    "name": "Utility Warning Light",
-                    "slug": "utility-warning-light",
-                    "color": "#F1E1B4"
-                },
-                {
-                    "name": "Utility Warning Base",
-                    "slug": "utility-warning-base",
-                    "color": "#DEAB14"
-                },
-                {
-                    "name": "Utility Warning Dark",
-                    "slug": "utility-warning-dark",
-                    "color": "#8A6904"
-                },
-                {
-                    "name": "Utility Success Light",
-                    "slug": "utility-success-light",
-                    "color": "#A9D1A6"
-                },
-                {
-                    "name": "Utility Success Base",
-                    "slug": "utility-success-base",
-                    "color": "#379E2D"
-                },
-                {
-                    "name": "Utility Success Dark",
-                    "slug": "utility-success-dark",
-                    "color": "#095402"
                 }
             ]
         },
@@ -370,7 +325,18 @@
 				"body": 1.6,
 				"heading": 1.2,
 				"heading-large": 1.3
-			}
+			},
+            "status-palette": {
+                "error-light": "#EAA6A6",
+                "error-base": "#B30F0F",
+                "error-dark": "#630202",
+                "warning-light": "#F1E1B4",
+                "warning-base": "#DEAB14",
+                "warning-dark": "#8A6904",
+                "success-light": "#A9D1A6",
+                "success-base": "#379E2D",
+                "success-dark": "#095402"
+            }
         },
         "blocks": {
             "core/image": {
