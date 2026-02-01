@@ -233,6 +233,24 @@
                     "slug": "secondary-base-to-darker",
                     "gradient": "linear-gradient(to bottom right, var(--wp--preset--color--secondary-base),var(--wp--preset--color--secondary-darker))"
                 }
+            ],
+            "duotone": [
+                {
+                    "name": "Primary Secondary",
+                    "slug": "primary-secondary",
+                    "colors": [
+                        "#88D6B3",
+                        "#9E589E"
+                    ]
+                },
+                {
+                    "name": "Secondary Tertiary",
+                    "slug": "secondary-tertiary",
+                    "colors": [
+                        "#9E589E",
+                        "#FFAE57"
+                    ]
+                }
             ]
         },
         "typography": {
