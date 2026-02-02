@@ -262,11 +262,11 @@
                     "fontFace": [
 						{
 							"fontDisplay": "block",
-							"fontFamily": "Cormorant Garamond",
+							"fontFamily": "Baskerville",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
 							"fontWeight": "400 700",
-							"src": [ "file:./assets/fonts/CormorantGaramond-VariableFont.woff2" ]
+							"src": [ "file:./assets/fonts/Baskervville-VariableFont_wght.woff2" ]
 						}
 					]
                 },
@@ -277,11 +277,11 @@
                     "fontFace": [
 						{
 							"fontDisplay": "block",
-							"fontFamily": "Titillium Web",
+							"fontFamily": "Zalando Sans SemiExpanded",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
 							"fontWeight": "900",
-							"src": [ "file:./assets/fonts/TitilliumWeb-Black.woff2.woff2" ]
+							"src": [ "file:./assets/fonts/ZalandoSansSemiExpanded-VariableFont_wght.woff2" ]
 						}
 					]
                 },
