@@ -254,6 +254,8 @@
             ]
         },
         "typography": {
+            "customFontSize": false,
+            "defaultFontSizes": false,
             "fontFamilies": [
                 {
                     "name": "Font Primary",
