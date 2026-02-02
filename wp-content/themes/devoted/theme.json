@@ -324,32 +324,32 @@
                 },
                 {
                     "name": "Heading 6",
-                    "slug": "heading6",
+                    "slug": "heading-six",
                     "size": "2.8rem"
                 },
                 {
                     "name": "Heading 5",
-                    "slug": "heading5",
+                    "slug": "heading-five",
                     "size": "3rem"
                 },
                 {
                     "name": "Heading 4",
-                    "slug": "heading4",
+                    "slug": "heading-four",
                     "size": "3.6rem"
                 },
                 {
                     "name": "Heading 3",
-                    "slug": "heading3",
+                    "slug": "heading-three",
                     "size": "4.2rem"
                 },
                 {
                     "name": "Heading 2",
-                    "slug": "heading2",
+                    "slug": "heading-two",
                     "size": "4.6rem"
                 },
                 {
                     "name": "Heading 1",
-                    "slug": "heading1",
+                    "slug": "heading-one",
                     "size": "5rem"
                 }
             ]
