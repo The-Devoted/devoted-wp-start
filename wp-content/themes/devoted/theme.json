@@ -385,6 +385,28 @@
 			"background": "var(--wp--preset--color--neutral-white)",
 			"text": "var(--wp--preset--color--neutral-darkest)"
 		},
+        "elements": {
+            "link": {
+                "color": {
+                    "text": "var(--wp--preset--color--secondary-dark)"
+                },
+                ":hover": {
+                    "color": {
+                        "text": "var(--wp--preset--color--secondary-darker)"
+                    }
+                },
+                ":active": {
+                    "color": {
+                        "text": "var(--wp--preset--color--secondary-darkest)"
+                    }
+                },
+                ":focus": {
+                    "color": {
+                        "text": "var(--wp--preset--color--secondary-darker)"
+                    }
+                }
+            }
+        },
         "spacing": {
             "blockGap": "var(--wp--preset--spacing--medium)",
             "padding": {
