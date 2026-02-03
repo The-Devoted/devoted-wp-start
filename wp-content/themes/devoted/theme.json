@@ -367,6 +367,10 @@
                 "success-light": "#A9D1A6",
                 "success-base": "#379E2D",
                 "success-dark": "#095402"
+            },
+            "transition": {
+                "time": "0.2s",
+                "easing": "ease-in-out"
             }
         },
         "blocks": {
