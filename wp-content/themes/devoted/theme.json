@@ -347,6 +347,11 @@
             ]
         },
         "custom": {
+            "border-width": {
+                "thin": "1px",
+                "medium": "0.3rem",
+                "thick": "0.7rem"
+            },
             "line-height": {
 				"body": 1.6,
 				"heading": 1.2,
