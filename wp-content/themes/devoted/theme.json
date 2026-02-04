@@ -15,55 +15,6 @@
     ],
 	"settings": {
         "appearanceTools": true,
-		"layout": {
-			"contentSize": "48rem",
-			"wideSize": "70rem",
-            "allowCustomContentAndWideSize": false
-		},
-        "spacing": {
-            "blockGap": true,
-            "customSpacingSize": false,
-            "defaultSpacingSizes": false,
-			"units": [ "rem","vw","vh"],
-            "spacingSizes": [
-                {
-                    "name": "2x Small",
-                    "slug": "two-x-small",
-                    "size": "0.4rem"
-                },
-                {
-                    "name": "Extra Small",
-                    "slug": "extra-small",
-                    "size": "0.8rem"
-                },
-                {
-                    "name": "Small",
-                    "slug": "small",
-                    "size": "1.2rem"
-                },
-                {
-                    "name": "Medium",
-                    "slug": "medium",
-                    "size": "1.8rem"
-                },
-                {
-                    "name": "Large",
-                    "slug": "large",
-                    "size": "2.2rem"
-                },
-                {
-                    "name": "Extra Large",
-                    "slug": "extra-large",
-                    "size": "3rem"
-                },
-                {
-                    "name": "2x Large",
-                    "slug": "two-x-large",
-                    "size": "4rem"
-                }
-            ]
-		},
-        "useRootPaddingAwareAlignments": true,
         "color": {
             "customDuotone": false,
             "customGradient": false,
@@ -253,6 +204,54 @@
                 }
             ]
         },
+		"layout": {
+			"contentSize": "48rem",
+			"wideSize": "70rem",
+            "allowCustomContentAndWideSize": false
+		},
+        "spacing": {
+            "blockGap": true,
+            "customSpacingSize": false,
+            "defaultSpacingSizes": false,
+			"units": [ "rem","vw","vh"],
+            "spacingSizes": [
+                {
+                    "name": "2x Small",
+                    "slug": "two-x-small",
+                    "size": "0.4rem"
+                },
+                {
+                    "name": "Extra Small",
+                    "slug": "extra-small",
+                    "size": "0.8rem"
+                },
+                {
+                    "name": "Small",
+                    "slug": "small",
+                    "size": "1.2rem"
+                },
+                {
+                    "name": "Medium",
+                    "slug": "medium",
+                    "size": "1.8rem"
+                },
+                {
+                    "name": "Large",
+                    "slug": "large",
+                    "size": "2.2rem"
+                },
+                {
+                    "name": "Extra Large",
+                    "slug": "extra-large",
+                    "size": "3rem"
+                },
+                {
+                    "name": "2x Large",
+                    "slug": "two-x-large",
+                    "size": "4rem"
+                }
+            ]
+		},
         "typography": {
             "customFontSize": false,
             "defaultFontSizes": false,
@@ -346,6 +345,7 @@
                 }
             ]
         },
+        "useRootPaddingAwareAlignments": true,
         "custom": {
             "border-width": {
                 "thin": "1px",
