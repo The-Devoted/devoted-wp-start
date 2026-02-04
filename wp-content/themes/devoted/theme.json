@@ -14,11 +14,62 @@
         }
     ],
 	"settings": {
+        "appearanceTools": true,
 		"layout": {
 			"contentSize": "48rem",
-			"wideSize": "70rem"
+			"wideSize": "70rem",
+            "allowCustomContentAndWideSize": false
 		},
+        "spacing": {
+            "blockGap": true,
+            "customSpacingSize": false,
+            "defaultSpacingSizes": false,
+			"units": [ "rem","vw","vh"],
+            "spacingSizes": [
+                {
+                    "name": "2x Small",
+                    "slug": "two-x-small",
+                    "size": "0.4rem"
+                },
+                {
+                    "name": "Extra Small",
+                    "slug": "extra-small",
+                    "size": "0.8rem"
+                },
+                {
+                    "name": "Small",
+                    "slug": "small",
+                    "size": "1.2rem"
+                },
+                {
+                    "name": "Medium",
+                    "slug": "medium",
+                    "size": "1.8rem"
+                },
+                {
+                    "name": "Large",
+                    "slug": "large",
+                    "size": "2.2rem"
+                },
+                {
+                    "name": "Extra Large",
+                    "slug": "extra-large",
+                    "size": "3rem"
+                },
+                {
+                    "name": "2x Large",
+                    "slug": "two-x-large",
+                    "size": "4rem"
+                }
+            ]
+		},
+        "useRootPaddingAwareAlignments": true,
         "color": {
+            "customDuotone": false,
+            "customGradient": false,
+            "defaultDuotone": false,
+            "defaultGradients": false,
+            "defaultPalette": false,
             "palette": [
                 {
                     "name": "Primary Lightest",
@@ -43,37 +94,37 @@
                 {
                     "name": "Primary Dark",
                     "slug": "primary-dark",
-                    "color": "#62B791"
+                    "color": "#62B7A4"
                 },
                 {
                     "name": "Primary Darker",
                     "slug": "primary-Darker",
-                    "color": "#448C6B"
+                    "color": "#288A78"
                 },
                 {
                     "name": "Primary Darkest",
                     "slug": "primary-darkest",
-                    "color": "#3F6453"
+                    "color": "#0A5E4A"
                 },
                 {
                     "name": "Secondary Lightest",
                     "slug": "secondary-lightest",
-                    "color": "#FCE2EF"
+                    "color": "#FAE6FF"
                 },
                 {
                     "name": "Secondary Lighter",
                     "slug": "secondary-lighter",
-                    "color": "#FEAFD7"
+                    "color": "#F3C3F3"
                 },
                 {
                     "name": "Secondary Light",
                     "slug": "secondary-light",
-                    "color": "#EF76B2"
+                    "color": "#DB99DB"
                 },
                 {
                     "name": "Secondary Base",
                     "slug": "secondary-base",
-                    "color": "#DA3386"
+                    "color": "#9E589E"
                 },
                 {
                     "name": "Secondary Dark",
@@ -88,7 +139,42 @@
                 {
                     "name": "Secondary Darkest",
                     "slug": "secondary-darkest",
-                    "color": "#4D0027"
+                    "color": "#420952"
+                },
+                {
+                    "name": "Tertiary Lightest",
+                    "slug": "tertiary-lightest",
+                    "color": "#FFF6ED"
+                },
+                {
+                    "name": "Tertiary Lighter",
+                    "slug": "tertiary-lighter",
+                    "color": "#FFE4C6"
+                },
+                {
+                    "name": "Tertiary Light",
+                    "slug": "tertiary-light",
+                    "color": "#FFC78C"
+                },
+                {
+                    "name": "Tertiary Base",
+                    "slug": "tertiary-base",
+                    "color": "#FFAE57"
+                },
+                {
+                    "name": "Tertiary Dark",
+                    "slug": "tertiary-dark",
+                    "color": "#FF982A"
+                },
+                {
+                    "name": "Tertiary Darker",
+                    "slug": "tertiary-Darker",
+                    "color": "#D87000"
+                },
+                {
+                    "name": "Tertiary Darkest",
+                    "slug": "tertiary-darkest",
+                    "color": "#783E00"
                 },
                 {
                     "name": "Neutral White",
@@ -98,91 +184,78 @@
                 {
                     "name": "Neutral Lightest",
                     "slug": "neutral-lightest",
-                    "color": "#DEDEDE"
+                    "color": "#D5DAE6"
                 },
                 {
                     "name": "Neutral Lighter",
                     "slug": "neutral-lighter",
-                    "color": "#BBBBBB"
+                    "color": "#B0B8CB"
                 },
                 {
                     "name": "Neutral Light",
                     "slug": "neutral-light",
-                    "color": "#999999"
+                    "color": "#8E96AA"
                 },
                 {
                     "name": "Neutral Base",
                     "slug": "neutral-base",
-                    "color": "#808080"
+                    "color": "#6E7989"
                 },
                 {
                     "name": "Neutral Dark",
                     "slug": "neutral-dark",
-                    "color": "#555555"
+                    "color": "#4E5563"
                 },
                 {
                     "name": "Neutral Darker",
                     "slug": "neutral-Darker",
-                    "color": "#333333"
+                    "color": "#303646"
                 },
                 {
                     "name": "Neutral Darkest",
                     "slug": "neutral-darkest",
-                    "color": "#222222"
+                    "color": "#0A152F"
                 },
                 {
                     "name": "Neutral Black",
                     "slug": "neutral-black",
                     "color": "#000000"
+                }
+            ],
+            "gradients": [
+                {
+                    "name": "Primary Base to Darker",
+                    "slug": "primary-base-to-darker",
+                    "gradient": "linear-gradient(to bottom right, var(--wp--preset--color--primary-base),var(--wp--preset--color--primary-darker))"
                 },
                 {
-                    "name": "Utility Error Light",
-                    "slug": "utility-error-light",
-                    "color": "#EAA6A6"
+                    "name": "Secondary Base to Darker",
+                    "slug": "secondary-base-to-darker",
+                    "gradient": "linear-gradient(to bottom right, var(--wp--preset--color--secondary-base),var(--wp--preset--color--secondary-darker))"
+                }
+            ],
+            "duotone": [
+                {
+                    "name": "Primary Secondary",
+                    "slug": "primary-secondary",
+                    "colors": [
+                        "#88D6B3",
+                        "#9E589E"
+                    ]
                 },
                 {
-                    "name": "Utility Error Base",
-                    "slug": "utility-error-base",
-                    "color": "#B30F0F"
-                },
-                {
-                    "name": "Utility Error Dark",
-                    "slug": "utility-error-dark",
-                    "color": "#630202"
-                },
-                {
-                    "name": "Utility Warning Light",
-                    "slug": "utility-warning-light",
-                    "color": "#F1E1B4"
-                },
-                {
-                    "name": "Utility Warning Base",
-                    "slug": "utility-warning-base",
-                    "color": "#DEAB14"
-                },
-                {
-                    "name": "Utility Warning Dark",
-                    "slug": "utility-warning-dark",
-                    "color": "#8A6904"
-                },
-                {
-                    "name": "Utility Success Light",
-                    "slug": "utility-success-light",
-                    "color": "#A9D1A6"
-                },
-                {
-                    "name": "Utility Success Base",
-                    "slug": "utility-success-base",
-                    "color": "#379E2D"
-                },
-                {
-                    "name": "Utility Success Dark",
-                    "slug": "utility-success-dark",
-                    "color": "#095402"
+                    "name": "Secondary Tertiary",
+                    "slug": "secondary-tertiary",
+                    "colors": [
+                        "#9E589E",
+                        "#FFAE57"
+                    ]
                 }
             ]
         },
         "typography": {
+            "customFontSize": false,
+            "defaultFontSizes": false,
             "fontFamilies": [
                 {
                     "name": "Font Primary",
@@ -191,11 +264,11 @@
                     "fontFace": [
 						{
 							"fontDisplay": "block",
-							"fontFamily": "Cormorant Garamond",
+							"fontFamily": "Baskerville",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
 							"fontWeight": "400 700",
-							"src": [ "file:./assets/fonts/CormorantGaramond-VariableFont.woff2" ]
+							"src": [ "file:./assets/fonts/Baskervville-VariableFont_wght.woff2" ]
 						}
 					]
                 },
@@ -206,11 +279,11 @@
                     "fontFace": [
 						{
 							"fontDisplay": "block",
-							"fontFamily": "Titillium Web",
+							"fontFamily": "Zalando Sans SemiExpanded",
 							"fontStretch": "normal",
 							"fontStyle": "normal",
 							"fontWeight": "900",
-							"src": [ "file:./assets/fonts/TitilliumWeb-Black.woff2.woff2" ]
+							"src": [ "file:./assets/fonts/ZalandoSansSemiExpanded-VariableFont_wght.woff2" ]
 						}
 					]
                 },
@@ -222,8 +295,8 @@
             ],
             "fontSizes": [
                 {
-                    "name": "Double Extra Small",
-                    "slug": "double-extra-small",
+                    "name": "2x Small",
+                    "slug": "two-x-small",
                     "size": "0.8rem"
                 },
                 {
@@ -239,56 +312,78 @@
                 {
                     "name": "Medium",
                     "slug": "medium",
-                    "size": "1.8rem"
+                    "size": "1.3rem"
                 },
                 {
-                    "name": "Large",
-                    "slug": "large",
+                    "name": "Large / Heading 6",
+                    "slug": "heading-six",
                     "size": "2rem"
                 },
                 {
-                    "name": "Extra Large",
-                    "slug": "extra-large",
+                    "name": "Extra Large / Heading 5",
+                    "slug": "heading-five",
                     "size": "2.6rem"
                 },
                 {
-                    "name": "Heading 6",
-                    "slug": "heading6",
-                    "size": "2.8rem"
-                },
-                {
-                    "name": "Heading 5",
-                    "slug": "heading5",
+                    "name": "Heading 4",
+                    "slug": "heading-four",
                     "size": "3rem"
                 },
                 {
-                    "name": "Heading 4",
-                    "slug": "heading4",
-                    "size": "3.6rem"
-                },
-                {
                     "name": "Heading 3",
-                    "slug": "heading3",
-                    "size": "4.2rem"
+                    "slug": "heading-three",
+                    "size": "3.4rem"
                 },
                 {
                     "name": "Heading 2",
-                    "slug": "heading2",
-                    "size": "4.6rem"
+                    "slug": "heading-two",
+                    "size": "4rem"
                 },
                 {
                     "name": "Heading 1",
-                    "slug": "heading1",
+                    "slug": "heading-one",
                     "size": "5rem"
                 }
             ]
         },
         "custom": {
+            "border-width": {
+                "thin": "1px",
+                "medium": "0.3rem",
+                "thick": "0.7rem"
+            },
             "line-height": {
 				"body": 1.6,
 				"heading": 1.2,
 				"heading-large": 1.3
-			}
+			},
+            "radius": {
+                "small": "0.4rem",
+                "medium": "0.8rem",
+                "large": "1.2rem"
+            },
+            "status-palette": {
+                "error-light": "#EAA6A6",
+                "error-base": "#B30F0F",
+                "error-dark": "#630202",
+                "warning-light": "#F1E1B4",
+                "warning-base": "#DEAB14",
+                "warning-dark": "#8A6904",
+                "success-light": "#A9D1A6",
+                "success-base": "#379E2D",
+                "success-dark": "#095402"
+            },
+            "transition": {
+                "time": "0.2s",
+                "easing": "ease-in-out"
+            }
+        },
+        "blocks": {
+            "core/image": {
+                "lightbox": {
+                    "allowEditing": true
+                }
+            }
         }
 	},
     "styles": {
@@ -296,6 +391,145 @@
 			"background": "var(--wp--preset--color--neutral-white)",
 			"text": "var(--wp--preset--color--neutral-darkest)"
 		},
+        "elements": {
+            "link": {
+                "color": {
+                    "text": "var(--wp--preset--color--secondary-dark)"
+                },
+                ":hover": {
+                    "color": {
+                        "text": "var(--wp--preset--color--secondary-darker)"
+                    }
+                },
+                ":active": {
+                    "color": {
+                        "text": "var(--wp--preset--color--secondary-darkest)"
+                    }
+                },
+                ":focus": {
+                    "color": {
+                        "text": "var(--wp--preset--color--secondary-darker)"
+                    }
+                }
+            },
+            "heading": {
+                "typography": {
+                    "fontFamily": "var(--wp--preset--font-family--font-secondary)",
+                    "fontWeight": "700"
+                }
+            },
+            "h1": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--heading-one)"
+                }
+            },
+            "h2": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--heading-two)"
+                }
+            },
+            "h3": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--heading-three)"
+                }
+            },
+            "h4": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--heading-four)"
+                }
+            },
+            "h5": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--heading-five)"
+                }
+            },
+            "h6": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--heading-six)"
+                }
+            },
+            "button": {
+                "color": {
+                    "text": "var(--wp--preset--color--neutral-white)",
+                    "background": "var(--wp--preset--color--primary-darker)"
+                },
+                "typography": {
+                    "fontFamily": "var(--wp--preset--font-family--font-secondary)",
+                    "fontWeight": "700"
+                },
+                "border": {
+                    "radius": "var(--wp--custom--radius--medium)"
+                },
+                "spacing": {
+                    "padding": {
+                        "top": "var(--wp--preset--spacing--extra-small)",
+                        "right": "var(--wp--preset--spacing--extra-large)",
+                        "bottom": "var(--wp--preset--spacing--extra-small)",
+                        "left": "var(--wp--preset--spacing--extra-large)"
+                    }
+                },
+                ":hover": {
+                    "color": {
+                        "background": "var(--wp--preset--color--primary-darkest)"
+                    }
+                },
+                ":focus": {
+                    "color": {
+                        "background": "var(--wp--preset--color--primary-darkest)"
+                    }
+                },
+                ":active": {
+                    "color": {
+                        "background": "var(--wp--preset--color--neutral-darkest)"
+                    }
+                },
+                "css": "transition: color var(--wp--custom--transition--time) var(--wp--custom--transition--easing), background-color var(--wp--custom--transition--time) var(--wp--custom--transition--easing);"
+            },
+            "caption": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--small)",
+                    "fontStyle": "italic"
+                },
+                "color": {
+                    "background": "var(--wp--preset--color--primary-lightest)"
+                },
+                "spacing": {
+                    "margin": {
+                        "top": "0",
+                        "right": "0",
+                        "bottom": "0",
+                        "left": "0"
+                    },
+                    "padding": {
+                        "top": "var(--wp--preset--spacing--extra-small)",
+                        "right": "var(--wp--preset--spacing--small)",
+                        "bottom": "var(--wp--preset--spacing--extra-small)",
+                        "left": "var(--wp--preset--spacing--small)"
+                    }
+                },
+                "border": {
+                    "left": {
+                        "color": "var(--wp--preset--color--primary-base)",
+                        "width": "var(--wp--custom--border-width--thick)",
+                        "style": "solid"
+                    }
+                }
+            },
+            "cite": {
+                "typography": {
+                    "fontSize": "var(--wp--preset--font-size--small)",
+                    "fontStyle": "italic"
+                },
+                "css": "&::before{content: '— ';}"
+            }
+        },
+        "spacing": {
+            "blockGap": "var(--wp--preset--spacing--medium)",
+            "padding": {
+                "left": "var(--wp--preset--font-size--medium)",
+                "right": "var(--wp--preset--font-size--medium)"
+            }
+        },
         "typography": {
 			"fontFamily": "var(--wp--preset--font-family--font-primary)",
             "fontSize": "var(--wp--preset--font-size--medium)",
