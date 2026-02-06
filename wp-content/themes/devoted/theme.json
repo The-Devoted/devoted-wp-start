@@ -223,6 +223,30 @@
                 }
             ]
         },
+        "dimensions": {
+            "dimensionSizes": [
+                {
+                    "name": "Small VH",
+                    "slug": "small-vh",
+                    "size": "10vh"
+                },
+                {
+                    "name": "Medium VH",
+                    "slug": "medium-vh",
+                    "size": "40vh"
+                },
+                {
+                    "name": "Large VH",
+                    "slug": "large-vh",
+                    "size": "70vh"
+                },
+                {
+                    "name": "Full VH",
+                    "slug": "full-vh",
+                    "size": "100vh"
+                }
+            ]
+        },
 		"layout": {
 			"contentSize": "48rem",
 			"wideSize": "70rem",
