@@ -15,55 +15,25 @@
     ],
 	"settings": {
         "appearanceTools": true,
-		"layout": {
-			"contentSize": "48rem",
-			"wideSize": "70rem",
-            "allowCustomContentAndWideSize": false
-		},
-        "spacing": {
-            "blockGap": true,
-            "customSpacingSize": false,
-            "defaultSpacingSizes": false,
-			"units": [ "rem","vw","vh"],
-            "spacingSizes": [
-                {
-                    "name": "2x Small",
-                    "slug": "two-x-small",
-                    "size": "0.4rem"
-                },
-                {
-                    "name": "Extra Small",
-                    "slug": "extra-small",
-                    "size": "0.8rem"
-                },
+        "border": {
+            "radiusSizes": [
                 {
                     "name": "Small",
                     "slug": "small",
-                    "size": "1.2rem"
+                    "size": "0.4rem"
                 },
                 {
                     "name": "Medium",
                     "slug": "medium",
-                    "size": "1.8rem"
+                    "size": "0.8rem"
                 },
                 {
                     "name": "Large",
                     "slug": "large",
-                    "size": "2.2rem"
-                },
-                {
-                    "name": "Extra Large",
-                    "slug": "extra-large",
-                    "size": "3rem"
-                },
-                {
-                    "name": "2x Large",
-                    "slug": "two-x-large",
-                    "size": "4rem"
+                    "size": "1.2rem"
                 }
             ]
-		},
-        "useRootPaddingAwareAlignments": true,
+        },
         "color": {
             "customDuotone": false,
             "customGradient": false,
@@ -253,6 +223,98 @@
                 }
             ]
         },
+        "dimensions": {
+            "dimensionSizes": [
+                {
+                    "name": "Small VH",
+                    "slug": "small-vh",
+                    "size": "10vh"
+                },
+                {
+                    "name": "Medium VH",
+                    "slug": "medium-vh",
+                    "size": "40vh"
+                },
+                {
+                    "name": "Large VH",
+                    "slug": "large-vh",
+                    "size": "70vh"
+                },
+                {
+                    "name": "Full VH",
+                    "slug": "full-vh",
+                    "size": "100vh"
+                }
+            ]
+        },
+		"layout": {
+			"contentSize": "48rem",
+			"wideSize": "70rem",
+            "allowCustomContentAndWideSize": false
+		},
+        "shadow": {
+            "defaultPresets": false,
+            "presets": [
+                {
+                    "name": "Small",
+                    "slug": "small",
+                    "shadow": "0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.2)"
+                },
+                {
+                    "name": "Medium",
+                    "slug": "medium",
+                    "shadow": "1rem 1rem 1rem rgba(0, 0, 0, 0.2)"
+                },
+                {
+                    "name": "Large",
+                    "slug": "large",
+                    "shadow": "2rem 2rem 2rem rgba(0, 0, 0, 0.2)"
+                }
+            ]
+        },
+        "spacing": {
+            "blockGap": true,
+            "customSpacingSize": false,
+            "defaultSpacingSizes": false,
+			"units": [ "rem","vw","vh"],
+            "spacingSizes": [
+                {
+                    "name": "2x Small",
+                    "slug": "two-x-small",
+                    "size": "0.4rem"
+                },
+                {
+                    "name": "Extra Small",
+                    "slug": "extra-small",
+                    "size": "0.8rem"
+                },
+                {
+                    "name": "Small",
+                    "slug": "small",
+                    "size": "1.2rem"
+                },
+                {
+                    "name": "Medium",
+                    "slug": "medium",
+                    "size": "1.8rem"
+                },
+                {
+                    "name": "Large",
+                    "slug": "large",
+                    "size": "2.2rem"
+                },
+                {
+                    "name": "Extra Large",
+                    "slug": "extra-large",
+                    "size": "3rem"
+                },
+                {
+                    "name": "2x Large",
+                    "slug": "two-x-large",
+                    "size": "4rem"
+                }
+            ]
+		},
         "typography": {
             "customFontSize": false,
             "defaultFontSizes": false,
@@ -346,6 +408,7 @@
                 }
             ]
         },
+        "useRootPaddingAwareAlignments": true,
         "custom": {
             "border-width": {
                 "thin": "1px",
@@ -357,11 +420,6 @@
 				"heading": 1.2,
 				"heading-large": 1.3
 			},
-            "radius": {
-                "small": "0.4rem",
-                "medium": "0.8rem",
-                "large": "1.2rem"
-            },
             "status-palette": {
                 "error-light": "#EAA6A6",
                 "error-base": "#B30F0F",
@@ -458,7 +516,7 @@
                     "fontWeight": "700"
                 },
                 "border": {
-                    "radius": "var(--wp--custom--radius--medium)"
+                    "radius": "var(--wp--preset--border--radius-sizes--medium)"
                 },
                 "spacing": {
                     "padding": {
