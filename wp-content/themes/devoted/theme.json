@@ -1,6 +1,15 @@
 {
     "$schema": "https://schemas.wp.org/trunk/theme.json",
     "version": 3,
+    "customTemplates": [
+        {
+            "name": "single-sidebar",
+            "title": "Single Post with Sidebar",
+            "postTypes": [
+                "post"
+            ]
+        }
+    ],
     "templateParts": [
         {
             "name": "header",
