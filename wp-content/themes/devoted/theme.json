@@ -3,6 +3,13 @@
     "version": 3,
     "customTemplates": [
         {
+            "name": "page-landing",
+            "title": "Landing Page",
+            "postTypes": [
+                "page"
+            ]
+        },
+        {
             "name": "page-no-sidebar",
             "title": "Single Page - No Sidebar",
             "postTypes": [
