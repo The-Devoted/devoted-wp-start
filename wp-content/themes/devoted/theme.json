@@ -606,6 +606,11 @@
 			"fontFamily": "var(--wp--preset--font-family--font-primary)",
             "fontSize": "var(--wp--preset--font-size--medium)",
             "lineHeight": "var(--wp--custom--line-height--body)"
-		}
+		},
+        "blocks": {
+            "core/columns": {
+                "css": "&.is-style-sidebar { gap: var(--wp--preset--spacing--extra-large); }"
+            }
+        }
     }
 }
