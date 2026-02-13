@@ -425,6 +425,10 @@
                 "medium": "0.3rem",
                 "thick": "0.7rem"
             },
+            "layout": {
+                "sidebar-main-width": "66%",
+                "sidebar-aside-width": "34%"
+            },
             "line-height": {
 				"body": 1.6,
 				"heading": 1.2,
