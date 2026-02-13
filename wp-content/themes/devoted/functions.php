@@ -82,3 +82,56 @@ function devoted_disallow_blocks($allowed_block_types, $block_editor_context) {
 
 }
 add_filter( 'allowed_block_types_all', 'devoted_disallow_blocks', 10, 2 );
+
+
+/**
+ * Register block styles.
+ *
+ * Creates style variants for core blocks that users can select in the block
+ * editor.
+ */
+function devoted_register_block_styles() {
+
+	$block_styles = array(
+		'core/columns' => array(
+			'sidebar' => __( 'Sidebar', 'devoted' ),
+		),
+	);
+
+	foreach ( $block_styles as $block => $styles ) {
+		foreach ( $styles as $style_name => $style_label ) {
+			register_block_style(
+				$block,
+				array(
+					'name'  => $style_name,
+					'label' => $style_label,
+				)
+			);
+		}
+	}
+}
+add_action( 'init', 'devoted_register_block_styles' );
+
+
+/**
+ * Enqueue Block Stylesheets
+ *
+ * Enables blocks to use complex styles beyond those defined in theme.json.
+ * Limit use to situations where css values in theme.json would be impossible or
+ * very cumbersome.
+ *
+ * If a block has styles in theme.json AND in a separate stylesheet, indicate as
+ * such in the separate stylesheet comments.
+ */
+
+function devoted_enqueue_block_styles() {
+
+	wp_enqueue_block_style( 'core/columns', array(
+		'handle' => 'devoted-block-columns',
+		'src'    => get_theme_file_uri( "assets/blocks/core-columns.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-columns.css" )
+	) );
+
+}
+
+add_action( 'init', 'devoted_enqueue_block_styles' );
