@@ -10,6 +10,20 @@
             ]
         },
         {
+            "name": "page-landing-no-title",
+            "title": "Landing Page - No Title",
+            "postTypes": [
+                "page"
+            ]
+        },
+        {
+            "name": "page-landing-blank",
+            "title": "Landing Page - Blank",
+            "postTypes": [
+                "page"
+            ]
+        },
+        {
             "name": "page-no-sidebar",
             "title": "Single Page - No Sidebar",
             "postTypes": [
