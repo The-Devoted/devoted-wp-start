@@ -3,6 +3,13 @@
     "version": 3,
     "customTemplates": [
         {
+            "name": "page-no-sidebar",
+            "title": "Single Page - No Sidebar",
+            "postTypes": [
+                "page"
+            ]
+        },
+        {
             "name": "single-no-sidebar",
             "title": "Single Post - No Sidebar",
             "postTypes": [
