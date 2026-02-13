@@ -8,6 +8,16 @@
             "title": "Header"
         },
         {
+            "name": "page-header",
+            "area": "uncategorized",
+            "title": "Page Header"
+        },
+        {
+            "name": "post-meta",
+            "area": "uncategorized",
+            "title": "Post Meta"
+        },
+        {
             "name": "footer",
             "area": "footer",
             "title": "Footer"
