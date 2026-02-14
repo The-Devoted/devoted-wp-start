@@ -296,7 +296,7 @@
         },
 		"layout": {
 			"contentSize": "48rem",
-			"wideSize": "70rem",
+			"wideSize": "85rem",
             "allowCustomContentAndWideSize": false
 		},
         "shadow": {
