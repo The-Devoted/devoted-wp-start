@@ -1,12 +1,14 @@
 <!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
+<!-- wp:group -->
+<div class="wp-block-group is-layout-constrained">
     <!-- wp:group {"tagName":"main"} -->
-    <main class="wp-block-group">
+    <main class="wp-block-group alignwide has-global-padding">
         <!-- wp:query -->
         <div class="wp-block-query">
             <!-- wp:post-template -->
             <!-- wp:post-featured-image /-->
             <!-- wp:post-title {"isLink":true} /-->
-            <!-- wp:post-author {"showAvatar":false} /-->
+            <!-- wp:post-author /-->
             <!-- wp:post-date /-->
             <!-- wp:post-terms {"term":"category"} /-->
             <!-- wp:post-terms {"term":"post_tag"} /-->
@@ -22,4 +24,6 @@
         <!-- /wp:query -->
     </main>
     <!-- /wp:group -->
+</div>
+<!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->
