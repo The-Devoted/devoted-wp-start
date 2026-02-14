@@ -1,26 +1,56 @@
 <!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
-    <!-- wp:group {"tagName":"main"} -->
-    <main class="wp-block-group">
+<!-- wp:group -->
+<div class="wp-block-group is-layout-constrained page-header">
+    <!-- wp:group -->
+    <div class="wp-block-group alignwide has-global-padding">
         <!-- wp:query-title {"type":"archive"} /-->
         <!-- wp:term-description /-->
-        <!-- wp:query -->
-        <div class="wp-block-query">
-        <!-- wp:post-template -->
-        <!-- wp:post-featured-image /-->
-        <!-- wp:post-title {"isLink":true} /-->
-        <!-- wp:post-author {"showAvatar":false} /-->
-        <!-- wp:post-date /-->
-        <!-- wp:post-terms {"term":"category"} /-->
-        <!-- wp:post-excerpt /-->
-        <!-- /wp:post-template -->
-        <!-- wp:query-pagination -->
-        <div class="wp-block-query-pagination">
-            <!-- wp:query-pagination-previous /-->
-            <!-- wp:query-pagination-next /-->
-        </div>
-        <!-- /wp:query-pagination -->
-            </div>
-        <!-- /wp:query -->
-    </main>
+    </div>
     <!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group -->
+<div class="wp-block-group is-layout-constrained">
+    <!-- wp:columns -->
+    <div class="wp-block-columns alignwide has-global-padding is-style-sidebar">
+        <!-- wp:column -->
+        <div class="wp-block-column devoted-columns__main-wrapper">
+            <!-- wp:group {"tagName": "main"} -->
+            <main class="wp-block-group">
+                <!-- wp:query -->
+                <div class="wp-block-query">
+                <!-- wp:post-template -->
+                <!-- wp:post-featured-image /-->
+                <!-- wp:post-title {"isLink":true} /-->
+                <!-- wp:post-author /-->
+                <!-- wp:post-date /-->
+                <!-- wp:post-terms {"term":"category"} /-->
+                <!-- wp:post-terms {"term":"post_tag"} /-->
+                <!-- wp:post-excerpt /-->
+                <!-- /wp:post-template -->
+                <!-- wp:query-pagination -->
+                <div class="wp-block-query-pagination">
+                    <!-- wp:query-pagination-previous /-->
+                    <!-- wp:query-pagination-next /-->
+                </div>
+                <!-- /wp:query-pagination -->
+                    </div>
+                <!-- /wp:query -->
+            </main>
+            <!-- /wp:group -->
+        </div>
+        <!-- /wp:column -->
+        <!-- wp:column -->
+        <div class="wp-block-column devoted-columns__aside-wrapper">
+            <!-- wp:group {"tagName":"aside"} -->
+            <aside class="wp-block-group">
+                <!-- wp:page-list /-->
+            </aside>
+            <!-- /wp:group -->
+        </div>
+        <!-- /wp:column -->
+    </div>
+    <!-- /wp:columns -->
+</div>
+<!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->

@@ -1,11 +1,58 @@
 {
     "$schema": "https://schemas.wp.org/trunk/theme.json",
     "version": 3,
+    "customTemplates": [
+        {
+            "name": "page-landing",
+            "title": "Landing Page",
+            "postTypes": [
+                "page"
+            ]
+        },
+        {
+            "name": "page-landing-no-title",
+            "title": "Landing Page - No Title",
+            "postTypes": [
+                "page"
+            ]
+        },
+        {
+            "name": "page-landing-blank",
+            "title": "Landing Page - Blank",
+            "postTypes": [
+                "page"
+            ]
+        },
+        {
+            "name": "page-no-sidebar",
+            "title": "Single Page - No Sidebar",
+            "postTypes": [
+                "page"
+            ]
+        },
+        {
+            "name": "single-no-sidebar",
+            "title": "Single Post - No Sidebar",
+            "postTypes": [
+                "post"
+            ]
+        }
+    ],
     "templateParts": [
         {
             "name": "header",
             "area": "header",
             "title": "Header"
+        },
+        {
+            "name": "page-header",
+            "area": "uncategorized",
+            "title": "Page Header"
+        },
+        {
+            "name": "post-meta",
+            "area": "uncategorized",
+            "title": "Post Meta"
         },
         {
             "name": "footer",
@@ -415,6 +462,10 @@
                 "medium": "0.3rem",
                 "thick": "0.7rem"
             },
+            "layout": {
+                "sidebar-main-width": "66%",
+                "sidebar-aside-width": "34%"
+            },
             "line-height": {
 				"body": 1.6,
 				"heading": 1.2,
@@ -592,6 +643,11 @@
 			"fontFamily": "var(--wp--preset--font-family--font-primary)",
             "fontSize": "var(--wp--preset--font-size--medium)",
             "lineHeight": "var(--wp--custom--line-height--body)"
-		}
+		},
+        "blocks": {
+            "core/columns": {
+                "css": "&.is-style-sidebar { gap: var(--wp--preset--spacing--extra-large); }"
+            }
+        }
     }
 }
