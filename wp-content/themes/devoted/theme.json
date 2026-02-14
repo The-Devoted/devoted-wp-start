@@ -647,6 +647,18 @@
         "blocks": {
             "core/columns": {
                 "css": "&.is-style-sidebar { gap: var(--wp--preset--spacing--extra-large); }"
+            },
+            "core/search": {
+                "elements": {
+                    "button": {
+                        "spacing": {
+                            "padding": {
+                                "left": "var(--wp--preset--spacing--extra-small)",
+                                "right": "var(--wp--preset--spacing--extra-small)"
+                            }
+                        }
+                    }
+                }
             }
         }
     }
