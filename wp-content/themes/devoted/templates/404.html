@@ -1,9 +1,19 @@
 <!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
-    <!-- wp:group {"tagName":"main"} -->
-    <main class="wp-block-group">
+<!-- wp:group -->
+<div class="wp-block-group is-layout-constrained page-header">
+<!-- wp:group -->
+    <div class="wp-block-group alignwide has-global-padding">
         <!-- wp:heading {"level": 1} -->
         <h1>Page Not Found</h1>
         <!-- /wp:heading -->
+    </div>
+<!-- /wp:group -->
+</div>
+<!-- /wp:group -->
+<!-- wp:group -->
+<div class="wp-block-group is-layout-constrained">
+    <!-- wp:group {"tagName":"main"} -->
+    <main class="wp-block-group alignwide has-global-padding">
         <!-- wp:paragraph -->
         <p>Sorry, we couldn't find that page.</p>
         <!-- /wp:paragraph -->
@@ -11,4 +21,6 @@
         <!-- wp:page-list /-->
     </main>
     <!-- /wp:group -->
+</div>
+<!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->
