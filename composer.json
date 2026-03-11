@@ -1,11 +1,11 @@
 {
-    "name": "wondermart/jslaughter",
-    "version": "0.0.1",
-    "description": "WordPress site for jslaughter.net",
+    "name": "the-devoted/devoted-wp-start",
+    "version": "0.0.2",
+    "description": "The Devoted's WordPress Starter Kit",
     "authors": [
         {
             "name": "Jenny Slaughter",
-            "email": "wondermart@gmail.com"
+            "email": "jenny@the-devoted.com"
         }
     ],
     "repositories": [
