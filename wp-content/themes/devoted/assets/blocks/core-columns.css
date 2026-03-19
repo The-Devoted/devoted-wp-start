@@ -17,11 +17,11 @@
 
         /* WP doesn't support using <main> or <aside> tags on .column blocks, so
         we control with wrappers instead. */
-        & .devoted-columns__main-wrapper {
+        & .dvo-columns__main-wrapper {
             max-width: var(--wp--custom--layout--sidebar-main-width);
         }
 
-        & .devoted-columns__aside-wrapper {
+        & .dvo-columns__aside-wrapper {
             max-width: var(--wp--custom--layout--sidebar-aside-width);
         }
     }
