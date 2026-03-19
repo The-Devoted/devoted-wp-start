@@ -1,3 +1,9 @@
-.dvo-gapless .entry-content > * {
+/* --------------------------------------- */
+/* Gapless Groups
+/* On landing pages, top-level blocks should not have block-spacing.
+/* --------------------------------------- */
+main.dvo-gapless,
+.dvo-gapless .entry-content > *,
+main.dvo-gapless + footer {
     margin-block-start: 0;
 }
