@@ -132,6 +132,12 @@ function devoted_enqueue_block_styles() {
 		'path'   => get_theme_file_path( "assets/blocks/core-columns.css" )
 	) );
 
+	wp_enqueue_block_style( 'core/group', array(
+		'handle' => 'devoted-block-group',
+		'src'    => get_theme_file_uri( "assets/blocks/core-group.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-group.css" )
+	) );
+
 }
 
 add_action( 'init', 'devoted_enqueue_block_styles' );
