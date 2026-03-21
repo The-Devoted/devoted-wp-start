@@ -16,8 +16,6 @@
     // Fetch an array of this entry's ancestors.
     $ancestors = devoted_get_ancestor_ids($post_ID);
 
-    // $top_level_link_attr = "";
-
     // If this is a top level page (no parents), print the nav for this section
     // (not the top level). This is a relatively rare use case, since most
     // top-level pages use a landing template instead of the sidebar/single-page
@@ -31,9 +29,8 @@
         $nav_to_print_ID = end($ancestors);
     }
 
-    // Print a link to the top level of the section or program, then print the children.
+    // Print a link to the top level of the section, then print the children.
     echo '<!-- wp:paragraph -->';
-    // echo '<p><a href="' . get_page_link($nav_to_print_ID) . '" class="dvo--secondary-nav__top-level-link" '. $top_level_link_attr . '>' . get_the_title($nav_to_print_ID) . '</a></p>';
     echo '<p><a href="' . get_page_link($nav_to_print_ID) . '" class="dvo--secondary-nav__top-level-link">' . get_the_title($nav_to_print_ID) . '</a></p>';
     echo '<!-- /wp:paragraph -->';
     echo '<!-- wp:page-list {"parentPageID":' . $nav_to_print_ID . '} /-->';
