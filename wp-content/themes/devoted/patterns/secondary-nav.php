@@ -6,8 +6,8 @@
  */
 ?>
 
-<!-- wp:group {"className":"dvo--secondary-nav"} -->
-<div class="wp-block-group dvo--secondary-nav">
+<!-- wp:group {"className":"dvo--secondary-nav", "tagName":"nav"} -->
+<nav class="wp-block-group dvo--secondary-nav" role="navigation" aria-label="secondary">
     <?php
 
     // Get the Post ID for the entry being displayed.
@@ -37,5 +37,5 @@
 
 
     ?>
-</div>
+</nav>
 <!-- /wp:group -->
