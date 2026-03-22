@@ -94,7 +94,7 @@ function devoted_register_block_styles() {
 
 	$block_styles = array(
 		'core/columns' => array(
-			'sidebar' => __( 'Sidebar', 'devoted' ),
+
 		),
 	);
 
