@@ -645,6 +645,15 @@
             "lineHeight": "var(--wp--custom--line-height--body)"
 		},
         "blocks": {
+            "core/accordion": {
+                "elements": {
+                    "heading": {
+                        "typography": {
+                            "fontSize": "var(--wp--preset--font-size--heading-six)"
+                        }
+                    }
+                }
+            },
             "core/columns": {
                 "css": "&.is-style-sidebar { gap: var(--wp--preset--spacing--extra-large); }"
             },
