@@ -94,7 +94,7 @@ function devoted_register_block_styles() {
 
 	$block_styles = array(
 		'core/columns' => array(
-			'sidebar' => __( 'Sidebar', 'devoted' ),
+
 		),
 	);
 
@@ -132,6 +132,35 @@ function devoted_enqueue_block_styles() {
 		'path'   => get_theme_file_path( "assets/blocks/core-columns.css" )
 	) );
 
+	wp_enqueue_block_style( 'core/group', array(
+		'handle' => 'devoted-block-group',
+		'src'    => get_theme_file_uri( "assets/blocks/core-group.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-group.css" )
+	) );
+
 }
 
 add_action( 'init', 'devoted_enqueue_block_styles' );
+
+
+/**
+ * Get Ancestor IDs
+ *
+ * Given an entry ID, return an array of the IDs of the entry's ancestors in
+ * ascending order (closest ancestor to the entry first, furthest/top-level
+ * entry last in the array).
+ */
+function devoted_get_ancestor_ids($post_ID) {
+
+	$ancestors = [];
+	$parent = wp_get_post_parent_id($post_ID);
+
+	// If a page has no ancestor, wp_get_post_parent_id returns 0.
+	while ($parent != 0) {
+		$ancestors[] = $parent;
+		$parent = wp_get_post_parent_id($parent);
+	}
+
+	return $ancestors;
+}
+add_action('init', 'devoted_get_ancestor_ids');
