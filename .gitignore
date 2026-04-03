@@ -11,6 +11,9 @@ util.sh
 # Ignore asset backups.
 /backups/assets/*
 
+# Ignore entire backups directory.
+/backups
+
 # Ignore Caddy file server config on staging
 Caddyfile
 
