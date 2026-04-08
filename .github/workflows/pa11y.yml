@@ -1,0 +1,38 @@
+name: Accessibility Scan with Pa11y
+
+on: [pull_request]
+
+jobs:
+  build:
+    name: Building site and running pa11y-ci tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source.
+        uses: actions/checkout@v2
+
+# For these steps, we need to:
+#   - install node
+#   - install pa11y
+#   - run the site within this action
+#       - Start Docker + composer install
+#   - run pa11y on a sitemap of the site spun up here
+# 
+#   TBD: will this action therefore take... FOREVER to run?
+        
+      - name: Read pa11y_output file.
+        id: pa11y_output
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./pa11y_output.txt
+        
+      - name: Comment on pull request.
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          message: '<details><summary>Pa11y testing results</summary>```${{ steps.pa11y_output.outputs.content }}```</details>'
+
+      - name: Check for pa11y failures.
+        if: contains(steps.pa11y_output.outputs.content, 'errno 2')
+        run: |
+          echo "::error::Accessibility scan failed. Please review the comment in the pull request or the pa11y-ci step in the workflow for details."
+          exit 1
