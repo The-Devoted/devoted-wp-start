@@ -96,6 +96,13 @@ function devoted_register_block_styles() {
 		'core/columns' => array(
 
 		),
+        'core/list' => array(
+            'dvo-list-no-indent' => __( 'No Indent', 'devoted' ),
+            'dvo-list-tight' => __( 'Tight', 'devoted' ),
+            'dvo-list-tight-no-indent' => __( 'Tight No Indent', 'devoted' ),
+            'dvo-list-loose' => __( 'Loose', 'devoted' ),
+            'dvo-list-loose-no-indent' => __( 'Loose No Indent', 'devoted' ),
+		),
 	);
 
 	foreach ( $block_styles as $block => $styles ) {
@@ -136,6 +143,12 @@ function devoted_enqueue_block_styles() {
 		'handle' => 'devoted-block-group',
 		'src'    => get_theme_file_uri( "assets/blocks/core-group.css" ),
 		'path'   => get_theme_file_path( "assets/blocks/core-group.css" )
+	) );
+
+    wp_enqueue_block_style( 'core/list', array(
+		'handle' => 'devoted-block-list',
+		'src'    => get_theme_file_uri( "assets/blocks/core-list.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-list.css" )
 	) );
 
 }

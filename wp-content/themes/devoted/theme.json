@@ -463,6 +463,7 @@
                 "thick": "0.7rem"
             },
             "layout": {
+                "block-gap": "var(--wp--preset--spacing--medium)",
                 "sidebar-main-width": "66%",
                 "sidebar-aside-width": "34%"
             },
@@ -633,7 +634,7 @@
             }
         },
         "spacing": {
-            "blockGap": "var(--wp--preset--spacing--medium)",
+            "blockGap": "var(--wp--custom--layout--block-gap)",
             "padding": {
                 "left": "var(--wp--preset--font-size--medium)",
                 "right": "var(--wp--preset--font-size--medium)"
