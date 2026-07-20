@@ -43,6 +43,10 @@ function devoted_enqueue_stylesheet() {
 }
 
 
+// Remove prefixes from archive titles.
+add_filter( 'get_the_archive_title_prefix', '__return_false' );
+
+
 /**
  * Filters the list of allowed block types
  *
