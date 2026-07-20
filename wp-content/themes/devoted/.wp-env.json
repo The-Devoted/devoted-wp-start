@@ -1,0 +1,15 @@
+{
+	"$schema": "https://raw.githubusercontent.com/WordPress/gutenberg/trunk/schemas/json/wp-env.json",
+	"core": null,
+	"testsEnvironment": false,
+	"themes": [ "." ],
+	"config": {
+		"WP_DEBUG": true,
+		"WP_DEBUG_LOG": true,
+		"SCRIPT_DEBUG": true,
+		"WP_ENVIRONMENT_TYPE": "development"
+	},
+	"lifecycleScripts": {
+		"afterStart": "wp-env run cli wp theme activate devoted"
+	}
+}

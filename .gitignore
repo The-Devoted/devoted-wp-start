@@ -67,6 +67,11 @@ auth.json
 # --------------------------
 node_modules
 
+# Compiled custom blocks.
+# --------------------------
+# Built from the theme's `src` directory via @wordpress/scripts (`npm run build`).
+/wp-content/themes/devoted/build/
+
 # Sass.
 # --------------------------
 .sass-cache/
