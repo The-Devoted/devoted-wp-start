@@ -12,6 +12,7 @@
     // Check for custom labels & settings via ACF Options Pages.
     $theme_settings_posts_label = get_field('posts_section_label', 'option');
     $theme_settings_search_results_label = get_field('search_results_label', 'option');
+    $theme_settings_404_page_label = get_field('404_page_label', 'option');
     $theme_settings_show_excerpt = get_field('show_excerpts_in_page_headers', 'option');
 
     // Init the label & display type
@@ -28,6 +29,12 @@
     } elseif ( is_search() ) {
         // If this is a search query, print a Search Results title.
         $page_header_label = ($theme_settings_search_results_label) ? $theme_settings_search_results_label : 'Search Results';
+        $page_header_is_title = true;
+        $page_header_show_excerpt = false;
+
+    } elseif ( is_404() ) {
+        // If this is a 404 page, print a 404 title.
+        $page_header_label = ($theme_settings_404_page_label) ? $theme_settings_404_page_label : 'Page Not Found';
         $page_header_is_title = true;
         $page_header_show_excerpt = false;
 
