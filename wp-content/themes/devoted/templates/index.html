@@ -1,29 +1,33 @@
 <!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
 <!-- wp:pattern {"slug":"devoted/site-page-header"} /-->
-<!-- wp:group -->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group is-layout-constrained">
-    <!-- wp:group {"tagName":"main"} -->
-    <main class="wp-block-group alignwide has-global-padding">
-        <!-- wp:query -->
-        <div class="wp-block-query">
-            <!-- wp:post-template -->
-            <!-- wp:post-featured-image /-->
-            <!-- wp:post-title {"isLink":true} /-->
-            <!-- wp:post-author /-->
-            <!-- wp:post-date /-->
-            <!-- wp:post-terms {"term":"category"} /-->
-            <!-- wp:post-terms {"term":"post_tag"} /-->
-            <!-- wp:post-excerpt /-->
-            <!-- /wp:post-template -->
-            <!-- wp:query-pagination -->
-            <div class="wp-block-query-pagination">
-                <!-- wp:query-pagination-previous /-->
-                <!-- wp:query-pagination-next /-->
+    <!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
+    <div class="wp-block-group alignwide">
+        <!-- wp:group {"tagName":"main","layout":{"type":"default"}} -->
+        <main class="wp-block-group alignwide has-global-padding">
+            <!-- wp:query -->
+            <div class="wp-block-query">
+                <!-- wp:post-template -->
+                <!-- wp:post-featured-image /-->
+                <!-- wp:post-title {"isLink":true} /-->
+                <!-- wp:post-author /-->
+                <!-- wp:post-date /-->
+                <!-- wp:post-terms {"term":"category"} /-->
+                <!-- wp:post-terms {"term":"post_tag"} /-->
+                <!-- wp:post-excerpt /-->
+                <!-- /wp:post-template -->
+                <!-- wp:query-pagination -->
+                <div class="wp-block-query-pagination">
+                    <!-- wp:query-pagination-previous /-->
+                    <!-- wp:query-pagination-next /-->
+                </div>
+                <!-- /wp:query-pagination -->
             </div>
-            <!-- /wp:query-pagination -->
-        </div>
-        <!-- /wp:query -->
-    </main>
+            <!-- /wp:query -->
+        </main>
+        <!-- /wp:group -->
+    </div>
     <!-- /wp:group -->
 </div>
 <!-- /wp:group -->
