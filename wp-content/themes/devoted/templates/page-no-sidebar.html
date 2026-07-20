@@ -1,12 +1,15 @@
 <!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
-<!-- wp:template-part {"slug":"page-header", "className":"page-header"} /-->
-<!-- wp:group -->
+<!-- wp:pattern {"slug":"devoted/site-page-header"} /-->
+<!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group is-layout-constrained">
-    <!-- wp:group {"tagName":"main"} -->
-    <main class="wp-block-group alignwide has-global-padding">
-        <!-- wp:post-featured-image /-->
-        <!-- wp:post-content /-->
-    </main>
+    <!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
+    <div class="wp-block-group alignwide">
+        <!-- wp:group {"tagName": "main","layout":{"type":"constrained","justifyContent":"left"}} -->
+        <main class="wp-block-group">
+            <!-- wp:post-content /-->
+        </main>
+        <!-- /wp:group -->
+    </div>
     <!-- /wp:group -->
 </div>
 <!-- /wp:group -->

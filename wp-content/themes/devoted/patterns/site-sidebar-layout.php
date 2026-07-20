@@ -1,7 +1,8 @@
 <?php
 /**
  * Title: Sidebar Layout
- * Slug: devoted/layout-sidebar
+ * Slug: devoted/site-sidebar-layout
+ * Categories: devoted-site
  */
 ?>
 

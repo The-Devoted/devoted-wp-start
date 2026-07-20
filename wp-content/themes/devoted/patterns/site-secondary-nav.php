@@ -1,8 +1,8 @@
 <?php
 /**
  * Title: Secondary Navigation
- * Slug: devoted/secondary-nav
- * Inserter: false
+ * Slug: devoted/site-secondary-nav
+ * Categories: devoted-site
  */
 ?>
 

@@ -1,31 +1,34 @@
 <!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
-<!-- wp:template-part {"slug":"page-header", "className":"page-header"} /-->
-<!-- wp:group -->
+<!-- wp:pattern {"slug":"devoted/site-page-header"} /-->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group is-layout-constrained">
-    <!-- wp:columns -->
-    <div class="wp-block-columns alignwide has-global-padding is-style-sidebar">
-        <!-- wp:column -->
-        <div class="wp-block-column dvo-columns__main-wrapper">
-            <!-- wp:group {"tagName": "main"} -->
-            <main class="wp-block-group">
-                <!-- wp:post-featured-image /-->
-                <!-- wp:post-content /-->
-            </main>
-            <!-- /wp:group -->
+    <!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
+    <div class="wp-block-group alignwide">
+        <!-- wp:columns -->
+        <div class="wp-block-columns alignwide has-global-padding is-style-sidebar">
+            <!-- wp:column -->
+            <div class="wp-block-column dvo-columns__main-wrapper">
+                <!-- wp:group {"tagName": "main","layout":{"type":"default"}} -->
+                <main class="wp-block-group">
+                    <!-- wp:post-content /-->
+                </main>
+                <!-- /wp:group -->
+            </div>
+            <!-- /wp:column -->
+            <!-- wp:column -->
+            <div class="wp-block-column dvo-columns__aside-wrapper">
+                <!-- wp:group {"tagName":"aside"} -->
+                <aside class="wp-block-group">
+                    <!-- wp:template-part {"slug":"sidebar-page","tagName":"sidebar-page","className":""} /-->
+                </aside>
+                <!-- /wp:group -->
+            </div>
+            <!-- /wp:column -->
         </div>
-        <!-- /wp:column -->
-        <!-- wp:column -->
-        <div class="wp-block-column dvo-columns__aside-wrapper">
-            <!-- wp:group {"tagName":"aside"} -->
-            <aside class="wp-block-group">
-                <!-- wp:pattern {"slug":"devoted/secondary-nav"} /-->
-            </aside>
-            <!-- /wp:group -->
-        </div>
-        <!-- /wp:column -->
+        <!-- /wp:columns -->
     </div>
-    <!-- /wp:columns -->
+    <!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->
-
