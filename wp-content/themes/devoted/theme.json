@@ -45,11 +45,6 @@
             "title": "Header"
         },
         {
-            "name": "page-header",
-            "area": "uncategorized",
-            "title": "Page Header"
-        },
-        {
             "name": "post-meta",
             "area": "uncategorized",
             "title": "Post Meta"
@@ -58,6 +53,26 @@
             "name": "footer",
             "area": "footer",
             "title": "Footer"
+        },
+        {
+            "name": "sidebar-category-archive",
+            "area": "uncategorized",
+            "title": "Sidebar for Category Archives"
+        },
+        {
+            "name": "sidebar-post",
+            "area": "uncategorized",
+            "title": "Sidebar for Posts"
+        },
+        {
+            "name": "sidebar-page",
+            "area": "uncategorized",
+            "title": "Sidebar for Pages"
+        },
+        {
+            "name": "sidebar-tag-archive",
+            "area": "uncategorized",
+            "title": "Sidebar for Tag Archives"
         }
     ],
 	"settings": {
