@@ -19,10 +19,11 @@
         we control with wrappers instead. */
         & .dvo-columns__main-wrapper {
             max-width: var(--wp--custom--layout--sidebar-main-width);
+            flex: 2;
         }
 
         & .dvo-columns__aside-wrapper {
-            max-width: var(--wp--custom--layout--sidebar-aside-width);
+            flex: 1;
         }
     }
 }

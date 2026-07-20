@@ -464,8 +464,8 @@
             },
             "layout": {
                 "block-gap": "var(--wp--preset--spacing--medium)",
-                "sidebar-main-width": "66%",
-                "sidebar-aside-width": "34%"
+                "root-padding": "clamp(1.5rem, -2.66rem + 8.511vw, 5rem)",
+                "sidebar-main-width": "56.25rem"
             },
             "line-height": {
 				"body": 1.6,
