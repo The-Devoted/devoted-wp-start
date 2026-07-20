@@ -1,0 +1,41 @@
+/* ------------------------------ */
+/* Default List
+/* ------------------------------ */
+.wp-block-list li {
+    margin-bottom: var(--wp--custom--layout--block-gap);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* ------------------------------ */
+/* Tight list:
+/* Remove gap between list items.
+/* ------------------------------ */
+ul[class*="tight"] li,
+ol[class*="tight"] li {
+    margin-bottom: 0;
+}
+
+/* ------------------------------ */
+/* Loose list:
+/* More air between list items.
+/* ------------------------------ */
+ul[class*="loose"] li,
+ol[class*="loose"] li {
+    margin-bottom: var(--wp--preset--spacing--large);
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* ------------------------------ */
+/* No Indent list:
+/* Remove left list indentation.
+/* ------------------------------ */
+ul[class*="no-indent"],
+ol[class*="no-indent"] {
+    padding-left: 0;
+}
