@@ -133,6 +133,12 @@ add_action( 'init', 'devoted_register_block_styles' );
 
 function devoted_enqueue_block_styles() {
 
+    wp_enqueue_block_style( 'core/button', array(
+		'handle' => 'devoted-block-button',
+		'src'    => get_theme_file_uri( "assets/blocks/core-button.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-button.css" )
+	) );
+
 	wp_enqueue_block_style( 'core/columns', array(
 		'handle' => 'devoted-block-columns',
 		'src'    => get_theme_file_uri( "assets/blocks/core-columns.css" ),
