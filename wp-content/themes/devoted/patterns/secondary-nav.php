@@ -7,7 +7,7 @@
 ?>
 
 <!-- wp:group {"className":"dvo--secondary-nav", "tagName":"nav"} -->
-<nav class="wp-block-group dvo--secondary-nav" role="navigation" aria-label="secondary">
+<nav class="wp-block-group dvo--secondary-nav" aria-label="secondary">
     <?php
 
     // Get the Post ID for the entry being displayed.
