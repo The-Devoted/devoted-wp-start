@@ -1,5 +1,5 @@
 # Get the WP image to use from environment variable.
-ARG wpimage="wordpress:php8.2-apache"
+ARG wpimage="wordpress:php8.3-apache"
 
 # Get the base image.
 FROM ${wpimage}
@@ -7,6 +7,9 @@ FROM ${wpimage}
 # Install Composer from Docker image and update it.
 COPY --from=composer/composer:latest-bin /composer /usr/bin/composer
 RUN composer self-update
+
+# Install wp-cli so core upgrades/verification can run inside the container.
+COPY --from=wordpress:cli /usr/local/bin/wp /usr/local/bin/wp
 
 # Install Node.js so custom blocks (authored in TypeScript under the theme's
 # `src` directory) can be compiled with @wordpress/scripts inside the container.
