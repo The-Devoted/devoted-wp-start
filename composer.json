@@ -38,7 +38,7 @@
     }
     },
     "require": {
-        "wpackagist-plugin/wp-smushit": "^3.23",
+        "wpackagist-plugin/wp-smushit": "^4.2",
         "wpackagist-plugin/filebird": "^6.5",
         "wpengine/advanced-custom-fields-pro": "^6.7",
         "wpackagist-plugin/melapress-login-security": "^2.3",
