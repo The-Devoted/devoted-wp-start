@@ -20,7 +20,7 @@ export default function save( { attributes }: SaveProps ) {
 		<RichText.Content
 			{ ...blockProps }
 			tagName="p"
-			value={ attributes.message }
+			value={ `${attributes.message} lmao` }
 		/>
 	);
 }

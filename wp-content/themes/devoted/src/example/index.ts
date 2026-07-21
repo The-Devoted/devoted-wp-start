@@ -3,6 +3,8 @@ import { registerBlockType, type BlockConfiguration } from '@wordpress/blocks';
 import metadata from './block.json';
 import Edit from './edit';
 import save from './save';
+import transforms from './transforms';
+import variations from './variations';
 import './style.scss';
 
 /**
@@ -13,5 +15,5 @@ import './style.scss';
  */
 registerBlockType(
 	metadata.name,
-	{ ...metadata, edit: Edit, save } as unknown as BlockConfiguration
+	{ ...metadata, edit: Edit, save, transforms, variations }
 );
