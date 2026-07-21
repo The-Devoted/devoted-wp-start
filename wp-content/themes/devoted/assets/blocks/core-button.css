@@ -1,0 +1,29 @@
+/* ------------------------------ */
+/* Style Variant: Outline
+/* ------------------------------ */
+
+.wp-block-button.is-style-outline .wp-block-button__link {
+    border-width: var(--wp--custom--semantic-block-settings--button-border-width);
+    padding-top: var(--wp--custom--semantic-block-settings--button-padding-top-bottom);
+    padding-bottom: var(--wp--custom--semantic-block-settings--button-padding-top-bottom);
+    padding-right: var(--wp--custom--semantic-block-settings--button-padding-left-right);
+    padding-left: var(--wp--custom--semantic-block-settings--button-padding-left-right);
+
+    &:hover {
+        color: var(--wp--preset--color--neutral-white);
+        background-color: var(--wp--custom--semantic-color--text-body);
+        border-color: var(--wp--custom--semantic-color--text-body);
+    }
+
+    &:active {
+        color: var(--wp--custom--semantic-color--button-active-text);
+        background-color: var(--wp--custom--semantic-color--button-active-background);
+        border-color: var(--wp--custom--semantic-color--button-active-border);
+    }
+
+    &:focus {
+        color: var(--wp--custom--semantic-color--button-focus-text);
+        background-color: var(--wp--custom--semantic-color--button-focus-background);
+        border-color: var(--wp--custom--semantic-color--button-focus-border);
+    }
+}

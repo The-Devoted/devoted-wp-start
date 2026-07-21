@@ -5,8 +5,7 @@
 util.sh
 
 # Ignore database backups.
-/backups/db/database_backup*.sql
-/backups/db/database_to_import.sql
+/backups/db/*
 
 # Ignore asset backups.
 /backups/assets/*

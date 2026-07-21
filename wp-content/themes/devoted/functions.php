@@ -43,6 +43,10 @@ function devoted_enqueue_stylesheet() {
 }
 
 
+// Remove prefixes from archive titles.
+add_filter( 'get_the_archive_title_prefix', '__return_false' );
+
+
 /**
  * Filters the list of allowed block types
  *
@@ -94,7 +98,14 @@ function devoted_register_block_styles() {
 
 	$block_styles = array(
 		'core/columns' => array(
-			'sidebar' => __( 'Sidebar', 'devoted' ),
+
+		),
+        'core/list' => array(
+            'dvo-list-no-indent' => __( 'No Indent', 'devoted' ),
+            'dvo-list-tight' => __( 'Tight', 'devoted' ),
+            'dvo-list-tight-no-indent' => __( 'Tight No Indent', 'devoted' ),
+            'dvo-list-loose' => __( 'Loose', 'devoted' ),
+            'dvo-list-loose-no-indent' => __( 'Loose No Indent', 'devoted' ),
 		),
 	);
 
@@ -126,12 +137,85 @@ add_action( 'init', 'devoted_register_block_styles' );
 
 function devoted_enqueue_block_styles() {
 
+    wp_enqueue_block_style( 'core/button', array(
+		'handle' => 'devoted-block-button',
+		'src'    => get_theme_file_uri( "assets/blocks/core-button.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-button.css" )
+	) );
+
 	wp_enqueue_block_style( 'core/columns', array(
 		'handle' => 'devoted-block-columns',
 		'src'    => get_theme_file_uri( "assets/blocks/core-columns.css" ),
 		'path'   => get_theme_file_path( "assets/blocks/core-columns.css" )
 	) );
 
+	wp_enqueue_block_style( 'core/group', array(
+		'handle' => 'devoted-block-group',
+		'src'    => get_theme_file_uri( "assets/blocks/core-group.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-group.css" )
+	) );
+
+    wp_enqueue_block_style( 'core/list', array(
+		'handle' => 'devoted-block-list',
+		'src'    => get_theme_file_uri( "assets/blocks/core-list.css" ),
+		'path'   => get_theme_file_path( "assets/blocks/core-list.css" )
+	) );
+
 }
 
 add_action( 'init', 'devoted_enqueue_block_styles' );
+
+
+/**
+ * Register block pattern categories.
+ *
+ */
+function devoted_register_block_pattern_categories() {
+
+	register_block_pattern_category(
+		'devoted-landing',
+		array(
+			'label'       => __( 'Landing', 'devoted' ),
+			'description' => __( 'Patterns for Landing Pages', 'devoted' ),
+		)
+	);
+    register_block_pattern_category(
+	'devoted-site',
+		array(
+			'label'       => __( 'Site', 'devoted' ),
+			'description' => __( 'Site building pieces such as global header and footer', 'devoted' ),
+		)
+	);
+	register_block_pattern_category(
+		'devoted-text',
+		array(
+			'label'       => __( 'Text', 'devoted' ),
+			'description' => __( 'Text-based patterns.', 'devoted' ),
+		)
+	);
+
+}
+
+add_action( 'init', 'devoted_register_block_pattern_categories' );
+
+/**
+ * Get Ancestor IDs
+ *
+ * Given an entry ID, return an array of the IDs of the entry's ancestors in
+ * ascending order (closest ancestor to the entry first, furthest/top-level
+ * entry last in the array).
+ */
+function devoted_get_ancestor_ids($post_ID) {
+
+	$ancestors = [];
+	$parent = wp_get_post_parent_id($post_ID);
+
+	// If a page has no ancestor, wp_get_post_parent_id returns 0.
+	while ($parent != 0) {
+		$ancestors[] = $parent;
+		$parent = wp_get_post_parent_id($parent);
+	}
+
+	return $ancestors;
+}
+add_action('init', 'devoted_get_ancestor_ids');

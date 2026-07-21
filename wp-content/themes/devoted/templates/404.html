@@ -1,26 +1,21 @@
 <!-- wp:template-part {"slug":"header","tagName":"header","className":"site-header"} /-->
-<!-- wp:group -->
-<div class="wp-block-group is-layout-constrained page-header">
-    <!-- wp:group -->
-    <div class="wp-block-group alignwide has-global-padding">
-        <!-- wp:heading {"level": 1} -->
-        <h1>Page Not Found</h1>
-        <!-- /wp:heading -->
-    </div>
-    <!-- /wp:group -->
-</div>
-<!-- /wp:group -->
-<!-- wp:group -->
+<!-- wp:pattern {"slug":"devoted/site-page-header"} /-->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group is-layout-constrained">
-    <!-- wp:group {"tagName":"main"} -->
-    <main class="wp-block-group alignwide has-global-padding">
-        <!-- wp:paragraph -->
-        <p>Sorry, we couldn't find that page.</p>
-        <!-- /wp:paragraph -->
-        <!-- wp:search /-->
-        <!-- wp:page-list /-->
-    </main>
-    <!-- /wp:group -->
+    <!-- wp:group {"align":"wide","layout":{"type":"default"}} -->
+    <div class="wp-block-group alignwide">
+        <!-- wp:group {"tagName":"main"} -->
+        <main class="wp-block-group">
+            <!-- wp:paragraph -->
+            <p>Sorry, we couldn't find that page.</p>
+            <!-- /wp:paragraph -->
+            <!-- wp:search /-->
+            <!-- wp:page-list /-->
+        </main>
+        <!-- /wp:group -->
+    </div>
+<!-- /wp:group -->
 </div>
 <!-- /wp:group -->
 <!-- wp:template-part {"slug":"footer","tagName":"footer","className":"site-footer"} /-->
