@@ -25,5 +25,6 @@ jobs:
             git checkout main
             git pull origin main
             docker compose down
-            docker compose up -d
+            docker compose up -d --build
             docker exec wordpress composer update
+            docker exec wordpress sh -c "cd /var/www/html/wp-content/themes/devoted && npm ci && npm run build"

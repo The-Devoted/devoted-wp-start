@@ -1,0 +1,23 @@
+{
+    "name": "devoted-blocks",
+    "engines": {
+      "node": "22"
+    },
+    "version": "0.1.0",
+    "description": "Custom Gutenberg blocks (TypeScript) for the Devoted WordPress theme.",
+    "private": true,
+    "scripts": {
+        "start": "wp-scripts start",
+        "build": "wp-scripts build",
+        "typecheck": "tsc --noEmit",
+        "lint:js": "wp-scripts lint-js",
+        "format": "wp-scripts format"
+    },
+    "devDependencies": {
+        "@types/react": "^19.2.0",
+        "@types/wordpress__block-editor": "^15.0.0",
+        "@types/wordpress__blocks": "^15.17.0",
+        "@wordpress/scripts": "^33.0.0",
+        "typescript": "^6.0.0"
+    }
+}
