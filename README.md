@@ -23,6 +23,7 @@ Using `docker compose` we create the following technology stack:
 | Database | [MariaDB](https://mariadb.org) | [Official MariaDB Docker Images](https://hub.docker.com/_/mariadb) |
 | Database GUI | [phpMyAdmin](https://www.phpmyadmin.net) | [Official phpMyAdmin Docker Images](https://hub.docker.com/_/phpmyadmin) |
 | Package Management | [Composer](https://getcomposer.org/) | [Composer Docker Images](https://hub.docker.com/r/composer/composer): same as official but with faster releases |
+| CLI | [WP-CLI](https://wp-cli.org/) | [Official WordPress CLI Docker Image](https://hub.docker.com/_/wordpress) (`wordpress:cli`) |
 | Testing Environtment | [Tugboat](https://www.tugboatqa.com/) | *N/A* |
 
 
@@ -80,6 +81,18 @@ variables.*
    [http://localhost:8000](http://localhost:8000) and follow the WordPress setup
    wizard the first time you run the stack.
 
+   Alternatively, complete the install without the browser using WP-CLI (bundled
+   in the image):
+
+   ```sh
+   docker exec -u www-data wordpress wp core install \
+     --url=http://localhost:8000 \
+     --title="Devoted WP Start" \
+     --admin_user=admin \
+     --admin_password=changeme \
+     --admin_email=you@example.com
+   ```
+
 Once running, the following services are available:
 
 | Service | URL |
@@ -110,8 +123,27 @@ Theme source lives in `wp-content/themes/devoted/`:
   the browser.
 - **View logs:** `docker compose logs -f wordpress`
 - **Open a shell in the container:** `docker exec -it wordpress bash`
+- **Run WP-CLI:** `docker exec -u www-data wordpress wp <command>` (see below).
 - **Stop the stack:** `docker compose down` (add `-v` to also remove the
   database and WordPress volumes for a clean slate).
+
+### WP-CLI
+
+The image bundles [WP-CLI](https://wp-cli.org/) (the `wp` binary), so core
+upgrades, plugin/theme management, database operations, and site config can all
+be run from the container instead of the browser. Run it as the `www-data` user
+so commands don't need `--allow-root` and any files WP-CLI writes keep the
+correct ownership:
+
+```sh
+docker exec -u www-data wordpress wp core version      # check WP version
+docker exec -u www-data wordpress wp plugin list       # list installed plugins
+docker exec -u www-data wordpress wp cache flush        # flush the object cache
+docker exec -u www-data wordpress wp search-replace old.example.com localhost:8000
+```
+
+For an interactive session, open a shell first
+(`docker exec -it -u www-data wordpress bash`) and run `wp ...` directly.
 
 ### Custom blocks (TypeScript)
 
@@ -177,6 +209,10 @@ Plugins are managed with [Composer](https://getcomposer.org/) via
 
 Installing the ACF Pro package requires a valid license/auth token (via
 `auth.json`, which is gitignored).
+
+Composer installs plugin files; activating them is a separate step you can do in
+the admin UI or with WP-CLI, e.g.
+`docker exec -u www-data wordpress wp plugin activate <slug>`.
 
 ### Rebuilding the containers
 

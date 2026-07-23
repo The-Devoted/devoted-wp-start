@@ -26,5 +26,7 @@ jobs:
             git pull origin main
             docker compose down
             docker compose up -d --build
+            docker exec wordpress wp core update --allow-root
+            docker exec wordpress wp core update-db --allow-root
             docker exec wordpress composer update
             docker exec wordpress sh -c "cd /var/www/html/wp-content/themes/devoted && npm ci && npm run build"
