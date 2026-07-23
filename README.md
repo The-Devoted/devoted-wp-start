@@ -214,6 +214,24 @@ Composer installs plugin files; activating them is a separate step you can do in
 the admin UI or with WP-CLI, e.g.
 `docker exec -u www-data wordpress wp plugin activate <slug>`.
 
+### Installed plugins
+
+| Plugin | Slug | Purpose | Notes |
+|---|---|---|---|
+| Yoast SEO | `wordpress-seo` | SEO metadata, sitemaps, and content analysis. | Replaces Rank Math. |
+| Duplicate Post | `duplicate-post` | Duplicate posts and pages from the admin list/editor. | |
+| Admin Menu Editor | `admin-menu-editor` | Customize and reorganize the wp-admin menu. | |
+| Converter for Media | `webp-converter-for-media` | Converts uploaded images to WebP/AVIF on the fly. | Can be removed if the client purchases Smush Pro. |
+| Complianz GDPR | `complianz-gdpr` | Cookie/consent banner and privacy policy compliance. | |
+| Google Site Kit | `google-site-kit` | Connects Google Search Console, Analytics, and other Google tools. | |
+| The Icon Block | `icon-block` | Adds an icon block with a large built-in icon library. | Distinct from the native core icon block, which is disabled in `functions.php`. |
+| Accessibility Checker | `accessibility-checker` | Scans content for accessibility issues in the editor. | |
+| Smush | `wp-smushit` | Image compression/optimization. | |
+| FileBird | `filebird` | Folder organization for the Media Library. | |
+| Advanced Custom Fields PRO | `advanced-custom-fields-pro` | Custom fields for posts, pages, and blocks. | |
+| Melapress Login Security | `melapress-login-security` | Login hardening (lockouts, 2FA, login logging). | |
+| Fluent SMTP | `fluent-smtp` | Configures outbound mail delivery via SMTP/API. | |
+
 ### Rebuilding the containers
 
 Changes to `docker-compose.yml`, the `wordpress/Dockerfile`, or the
