@@ -42,7 +42,14 @@
         "wpackagist-plugin/filebird": "^6.5",
         "wpengine/advanced-custom-fields-pro": "^6.7",
         "wpackagist-plugin/melapress-login-security": "^2.3",
-        "wpackagist-plugin/seo-by-rank-math": "^1.0",
-        "wpackagist-plugin/fluent-smtp": "^2.2"
+        "wpackagist-plugin/fluent-smtp": "^2.2",
+        "wpackagist-plugin/wordpress-seo": "^28.1",
+        "wpackagist-plugin/duplicate-post": "^4.7",
+        "wpackagist-plugin/admin-menu-editor": "^1.15",
+        "wpackagist-plugin/webp-converter-for-media": "^6.6",
+        "wpackagist-plugin/complianz-gdpr": "^7.5",
+        "wpackagist-plugin/google-site-kit": "^1.183",
+        "wpackagist-plugin/icon-block": "^2.0",
+        "wpackagist-plugin/accessibility-checker": "^1.47"
     }
 }
