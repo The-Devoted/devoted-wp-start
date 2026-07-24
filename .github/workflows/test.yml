@@ -1,0 +1,73 @@
+name: E2E Tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  e2e:
+    name: Playwright E2E
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Write .env
+        run: |
+          cat <<'EOF' > .env
+          PROJECT_NAME=devoted_wp_e2e
+          DOCKER_WORDPRESS_IMAGE=wordpress:7.0-php8.3-apache
+          DOCKER_DB_IMAGE=mariadb:noble
+          DOCKER_DB_GUI_IMAGE=phpmyadmin:latest
+          WORDPRESS_THEME_NAME=devoted
+          WORDPRESS_DB_NAME=wordpress
+          WORDPRESS_DB_HOST=db
+          WORDPRESS_DB_USER=wordpress
+          WORDPRESS_DB_PASSWORD=wordpress
+          WORDPRESS_DEBUG=true
+          MYSQL_ROOT_HOST=%
+          EOF
+
+      # Composer plugin installs need auth.json even when it stays empty;
+      # the ACF Pro / WP Engine credentials it'd otherwise hold aren't wired
+      # into CI yet (tracked in issue #101's prerequisite).
+      - name: Write placeholder auth.json
+        run: echo '{}' > auth.json
+
+      - name: Start the Docker stack
+        run: docker compose up -d --build
+
+      - name: Build the theme's custom blocks
+        run: docker exec wordpress sh -c "cd /var/www/html/wp-content/themes/devoted && npm ci && npm run build"
+
+      - name: Install e2e test dependencies
+        working-directory: tests/e2e
+        run: npm ci
+
+      - name: Install Playwright browsers
+        working-directory: tests/e2e
+        run: npx playwright install --with-deps chromium
+
+      - name: Run Playwright tests
+        working-directory: tests/e2e
+        run: npm test
+
+      - name: Upload Playwright report
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: tests/e2e/playwright-report/
+          retention-days: 7
+
+      - name: Docker logs (on failure)
+        if: failure()
+        run: docker compose logs
+
+      - name: Stop the Docker stack
+        if: always()
+        run: docker compose down -v

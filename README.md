@@ -194,6 +194,21 @@ includes Node.js): the workflow rebuilds the image and runs
 `npm ci && npm run build` against the theme. Because `build/` is git-ignored,
 committing a change to a block means committing the `src/` change only.
 
+### End-to-end testing
+
+[Playwright](https://playwright.dev) smoke tests live in `tests/e2e/`, a
+separate npm package from the theme. With the Docker stack running:
+
+```sh
+cd tests/e2e
+npm install       # first time only
+npm test
+```
+
+See [`tests/e2e/README.md`](tests/e2e/README.md) for scope, environment
+variables, and how this runs in CI (`.github/workflows/test.yml`, on pull
+requests and pushes to `main`).
+
 ### Managing plugins and dependencies
 
 Plugins are managed with [Composer](https://getcomposer.org/) via
