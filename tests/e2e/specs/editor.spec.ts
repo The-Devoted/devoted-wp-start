@@ -22,5 +22,5 @@ test('editor: create a page with a core block and the custom example block', asy
   const publishedPage = await editor.viewPublishedPage();
 
   await expect(publishedPage.getByText(paragraphText)).toBeVisible();
-  await expect(publishedPage.getByText(`${exampleMessage} lmao`)).toBeVisible();
+  await expect(publishedPage.getByText(exampleMessage)).toBeVisible();
 });
