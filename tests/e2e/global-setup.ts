@@ -69,12 +69,12 @@ function hasActiveAcf(): boolean {
 
 /**
  * The theme's patterns call ACF's `get_field()`, so without ACF active the
- * site 500s outright. Production and local dev use ACF Pro via Composer + a
- * WP Engine license (see the README); CI doesn't have those credentials
- * wired up yet (tracked in issue #101's prerequisite), so fall back to the
- * free version from wordpress.org just so the site is up for these smoke
- * tests. This suite doesn't assert on ACF-specific behavior — see the specs
- * README — it just needs *a* working site.
+ * site 500s outright. Production, local dev, and same-repo CI runs use ACF
+ * Pro via Composer + a WP Engine license (see the README); forked PRs don't
+ * get repo secrets, so fall back to the free version from wordpress.org just
+ * so the site is up for these smoke tests. This suite doesn't assert on
+ * ACF-specific behavior — see the specs README — it just needs *a* working
+ * site.
  */
 function ensureAcfAvailable(): void {
   if (hasActiveAcf()) return;

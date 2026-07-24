@@ -32,14 +32,27 @@ jobs:
           MYSQL_ROOT_HOST=%
           EOF
 
-      # Composer plugin installs need auth.json even when it stays empty;
-      # the ACF Pro / WP Engine credentials it'd otherwise hold aren't wired
-      # into CI yet (tracked in issue #101's prerequisite).
-      - name: Write placeholder auth.json
-        run: echo '{}' > auth.json
+      # Forked PRs don't get repo secrets, so fall back to the placeholder;
+      # global-setup.ts installs the free ACF plugin when auth.json is empty.
+      - name: Write auth.json
+        env:
+          COMPOSER_AUTH_JSON: ${{ secrets.COMPOSER_AUTH_JSON }}
+        run: |
+          if [ -n "$COMPOSER_AUTH_JSON" ]; then
+            echo "$COMPOSER_AUTH_JSON" > auth.json
+          else
+            echo '{}' > auth.json
+          fi
 
       - name: Start the Docker stack
         run: docker compose up -d --build
+
+      # Only runs when the secret is set (same-repo PRs, pushes to main);
+      # forked PRs don't get repo secrets and keep relying on the free-ACF
+      # fallback in global-setup.ts.
+      - name: Install Composer-managed plugins
+        if: ${{ secrets.COMPOSER_AUTH_JSON != '' }}
+        run: docker exec wordpress composer update --no-interaction
 
       - name: Build the theme's custom blocks
         run: docker exec wordpress sh -c "cd /var/www/html/wp-content/themes/devoted && npm ci && npm run build"
