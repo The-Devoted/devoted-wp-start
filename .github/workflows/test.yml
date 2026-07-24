@@ -12,6 +12,8 @@ jobs:
   e2e:
     name: Playwright E2E
     runs-on: ubuntu-latest
+    env:
+      COMPOSER_AUTH_JSON: ${{ secrets.COMPOSER_AUTH_JSON }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -35,8 +37,6 @@ jobs:
       # Forked PRs don't get repo secrets, so fall back to the placeholder;
       # global-setup.ts installs the free ACF plugin when auth.json is empty.
       - name: Write auth.json
-        env:
-          COMPOSER_AUTH_JSON: ${{ secrets.COMPOSER_AUTH_JSON }}
         run: |
           if [ -n "$COMPOSER_AUTH_JSON" ]; then
             echo "$COMPOSER_AUTH_JSON" > auth.json
@@ -51,7 +51,7 @@ jobs:
       # forked PRs don't get repo secrets and keep relying on the free-ACF
       # fallback in global-setup.ts.
       - name: Install Composer-managed plugins
-        if: ${{ secrets.COMPOSER_AUTH_JSON != '' }}
+        if: ${{ env.COMPOSER_AUTH_JSON != '' }}
         run: docker exec wordpress composer update --no-interaction
 
       - name: Build the theme's custom blocks
