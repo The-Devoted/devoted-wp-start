@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "08468adf7e7a69d8649b3d76cd99c91b",
+    "content-hash": "76738c30fc14bda37968b9a756f0ba8c",
     "packages": [
         {
             "name": "composer/installers",
@@ -153,6 +153,78 @@
             "time": "2024-06-24T20:46:46+00:00"
         },
         {
+            "name": "wpackagist-plugin/accessibility-checker",
+            "version": "1.47.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/accessibility-checker/",
+                "reference": "tags/1.47.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/accessibility-checker.1.47.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/accessibility-checker/"
+        },
+        {
+            "name": "wpackagist-plugin/admin-menu-editor",
+            "version": "1.15.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/admin-menu-editor/",
+                "reference": "tags/1.15.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/admin-menu-editor.1.15.1.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/admin-menu-editor/"
+        },
+        {
+            "name": "wpackagist-plugin/complianz-gdpr",
+            "version": "7.5.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/complianz-gdpr/",
+                "reference": "tags/7.5.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/complianz-gdpr.7.5.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/complianz-gdpr/"
+        },
+        {
+            "name": "wpackagist-plugin/duplicate-post",
+            "version": "4.7",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/duplicate-post/",
+                "reference": "tags/4.7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/duplicate-post.4.7.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/duplicate-post/"
+        },
+        {
             "name": "wpackagist-plugin/filebird",
             "version": "6.5.5",
             "source": {
@@ -189,6 +261,42 @@
             "homepage": "https://wordpress.org/plugins/fluent-smtp/"
         },
         {
+            "name": "wpackagist-plugin/google-site-kit",
+            "version": "1.183.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/google-site-kit/",
+                "reference": "tags/1.183.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/google-site-kit.1.183.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/google-site-kit/"
+        },
+        {
+            "name": "wpackagist-plugin/icon-block",
+            "version": "2.0.0",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/icon-block/",
+                "reference": "tags/2.0.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/icon-block.2.0.0.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/icon-block/"
+        },
+        {
             "name": "wpackagist-plugin/melapress-login-security",
             "version": "2.3.0",
             "source": {
@@ -207,22 +315,40 @@
             "homepage": "https://wordpress.org/plugins/melapress-login-security/"
         },
         {
-            "name": "wpackagist-plugin/seo-by-rank-math",
-            "version": "1.0.274.1",
+            "name": "wpackagist-plugin/webp-converter-for-media",
+            "version": "6.6.2",
             "source": {
                 "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/seo-by-rank-math/",
-                "reference": "tags/1.0.274.1"
+                "url": "https://plugins.svn.wordpress.org/webp-converter-for-media/",
+                "reference": "tags/6.6.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/seo-by-rank-math.1.0.274.1.zip"
+                "url": "https://downloads.wordpress.org/plugin/webp-converter-for-media.6.6.2.zip"
             },
             "require": {
                 "composer/installers": "^1.0 || ^2.0"
             },
             "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/seo-by-rank-math/"
+            "homepage": "https://wordpress.org/plugins/webp-converter-for-media/"
+        },
+        {
+            "name": "wpackagist-plugin/wordpress-seo",
+            "version": "28.1",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wordpress-seo/",
+                "reference": "tags/28.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wordpress-seo.28.1.zip"
+            },
+            "require": {
+                "composer/installers": "^1.0 || ^2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wordpress-seo/"
         },
         {
             "name": "wpackagist-plugin/wp-smushit",

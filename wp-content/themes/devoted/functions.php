@@ -59,7 +59,8 @@ add_filter( 'get_the_archive_title_prefix', '__return_false' );
 function devoted_disallow_blocks($allowed_block_types, $block_editor_context) {
 
 	$disallowed_blocks = array(
-		'core/spacer'
+		'core/spacer',
+		'core/icon'
 	);
 
 	// Get all registered blocks if $allowed_block_types is not already set.
