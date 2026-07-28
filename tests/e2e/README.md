@@ -17,7 +17,10 @@ Small slice, core smoke coverage only:
   theme's `devoted/example` block, publishes it, checks both render.
 - `specs/accessibility.spec.ts` — runs an [axe-core](https://www.npmjs.com/package/@axe-core/playwright)
   WCAG 2.0/2.1 A/AA scan against the front page, login page, and admin
-  dashboard, failing on any violation.
+  dashboard, failing on any violation. It also crawls every URL listed in
+  the site's sitemap (`fixtures/sitemap.ts`) and scans each one, reporting
+  every offending URL and its violations together rather than failing on
+  the first bad page.
 
 ## Page objects
 
@@ -36,6 +39,12 @@ implementation is repeatable and the suite's vocabulary matches the app's:
   a thin wrapper around `AxeBuilder` used by `accessibility.spec.ts`. The
   `exclude` param takes CSS selectors for third-party plugin markup this
   suite doesn't own (see "Known gap" below), not theme/core chrome.
+  `getAccessibilityViolations`/`summarizeAccessibilityViolations` expose the
+  same scan without asserting, for callers (the sitemap crawl) that need to
+  keep going across several pages and report everything at once.
+- `fixtures/sitemap.ts` — `fetchSitemapUrls(indexUrl?)` walks a sitemap
+  index (Yoast SEO's `/sitemap_index.xml` by default) and returns every page
+  URL it lists, recursing into nested per-post-type sitemaps.
 
 Locator and method names mirror Gutenberg/WordPress's own accessible names
 ("Add title", "Add default block", "Editor publish") instead of inventing
@@ -56,6 +65,13 @@ plugin, not the theme, so `accessibility.spec.ts` excludes it rather than
 failing CI on something this repo can't fix. Update the selector if the
 plugin's markup changes, or drop the exclusion once it's fixed upstream.
 
+## Known gap: sitemap crawl grows with leftover test content
+
+`editor.spec.ts` publishes pages named `e2e-test-page-<timestamp>` and
+doesn't clean them up, so repeated local runs accumulate pages that the
+sitemap crawl will also scan. Harmless (just redundant coverage), but
+worth knowing if the sitemap test gets noticeably slower over time locally.
+
 ## Known gap: forked PRs fall back to the free ACF plugin
 
 The theme needs ACF's `get_field()` or the site 500s. Production/local dev
@@ -74,7 +90,9 @@ assert on ACF-specific behavior, so the fallback is fine for smoke coverage
 3. `npm test`.
 
 `global-setup.ts` waits for WordPress to be ready, runs an idempotent
-`wp core install` with fixed test credentials, activates the `devoted` theme
+`wp core install` with fixed test credentials, switches permalinks to
+`/%postname%/` (a fresh install defaults to plain `?p=123` permalinks,
+under which Yoast SEO's sitemap URLs 404), activates the `devoted` theme
 and installed plugins, and ensures ACF is available.
 
 | Var | Default | Purpose |

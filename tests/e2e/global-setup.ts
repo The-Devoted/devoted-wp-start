@@ -59,6 +59,22 @@ async function ensureWordPressInstalled(): Promise<void> {
   );
 }
 
+function hasPrettyPermalinks(): boolean {
+  return wp(['option', 'get', 'permalink_structure']).trim().length > 0;
+}
+
+/**
+ * A fresh `wp core install` defaults to plain `?p=123` permalinks, under
+ * which Yoast SEO's pretty sitemap URLs (`/post-sitemap.xml`, etc.) 404 —
+ * only their `?sitemap=` query-var form resolves. Pretty permalinks are
+ * also what real sites run, so this fixes the environment rather than
+ * teaching the sitemap fixture to route around plain permalinks.
+ */
+function ensurePrettyPermalinks(): void {
+  if (hasPrettyPermalinks()) return;
+  wp(['rewrite', 'structure', '/%postname%/', '--hard']);
+}
+
 function hasActiveAcf(): boolean {
   const active = wp(['plugin', 'list', '--status=active', '--field=name']);
   return active
@@ -83,6 +99,7 @@ function ensureAcfAvailable(): void {
 
 export default async function globalSetup(): Promise<void> {
   await ensureWordPressInstalled();
+  ensurePrettyPermalinks();
 
   wp(['theme', 'activate', 'devoted']);
   wp(['plugin', 'activate', '--all']);
