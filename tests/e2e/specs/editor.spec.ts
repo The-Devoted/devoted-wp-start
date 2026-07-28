@@ -1,7 +1,7 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from '../fixtures/wpPosts';
 import { BlockEditorPage } from '../pages/BlockEditorPage';
 
-test('editor: create a page with a core block and the custom example block', async ({ page }) => {
+test('editor: create a page with a core block and the custom example block', async ({ page, trackPost }) => {
   const pageTitle = `E2E Test Page ${Date.now()}`;
   const paragraphText = 'This paragraph was written by the Playwright e2e suite.';
   const exampleMessage = 'Example block message from the e2e suite';
@@ -19,6 +19,7 @@ test('editor: create a page with a core block and the custom example block', asy
   await editor.typeInBlock(exampleMessage);
 
   await editor.publish();
+  trackPost(editor.postId());
   const publishedPage = await editor.viewPublishedPage();
 
   await expect(publishedPage.getByText(paragraphText)).toBeVisible();

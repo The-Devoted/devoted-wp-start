@@ -1,15 +1,8 @@
-import { execFileSync } from 'node:child_process';
-import { ADMIN_PASSWORD, ADMIN_USER, BASE_URL, WP_CONTAINER_NAME } from './constants';
+import { ADMIN_PASSWORD, ADMIN_USER, BASE_URL } from './constants';
+import { wp } from './fixtures/wpCli';
 
 const MAX_WAIT_MS = 60_000;
 const POLL_INTERVAL_MS = 2_000;
-
-function wp(args: string[]): string {
-  return execFileSync('docker', ['exec', '-u', 'www-data', WP_CONTAINER_NAME, 'wp', ...args], {
-    encoding: 'utf-8',
-    stdio: ['ignore', 'pipe', 'ignore'],
-  });
-}
 
 function isInstalled(): boolean {
   try {

@@ -76,6 +76,20 @@ export class BlockEditorPage {
     await expect(this.page.getByText('is now live.')).toBeVisible({ timeout: 15_000 });
   }
 
+  /**
+   * The post/page ID, read back from the `post` query param Gutenberg
+   * rewrites the URL to (`post-new.php` → `post.php?post=<id>`) once
+   * publishing completes. Used by specs to hand the ID to the `wpPosts`
+   * fixture for teardown.
+   */
+  postId(): number {
+    const id = new URL(this.page.url()).searchParams.get('post');
+    if (!id) {
+      throw new Error(`Could not read post ID from editor URL: ${this.page.url()}`);
+    }
+    return Number(id);
+  }
+
   /** Opens the published post/page in a new tab via the post-publish panel's "View Page" link. */
   async viewPublishedPage(): Promise<FrontEndPage> {
     const [popup] = await Promise.all([this.page.waitForEvent('popup'), this.publishPanel.viewPageLink.click()]);

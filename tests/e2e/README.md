@@ -45,6 +45,16 @@ implementation is repeatable and the suite's vocabulary matches the app's:
 - `fixtures/sitemap.ts` — `fetchSitemapUrls(indexUrl?)` walks a sitemap
   index (Yoast SEO's `/sitemap_index.xml` by default) and returns every page
   URL it lists, recursing into nested per-post-type sitemaps.
+- `fixtures/wpCli.ts` — `wp(args)`, runs a `wp` CLI command inside the
+  WordPress container (shared by `global-setup.ts` and `fixtures/wpPosts.ts`).
+- `fixtures/wpPosts.ts` — a [Playwright test fixture](https://playwright.dev/docs/test-fixtures)
+  (`test`/`expect` re-exported from here, in place of `@playwright/test`) that
+  adds a `trackPost(postId)` fixture: register any post/page a test creates
+  and it's deleted via `wp post delete --force` once the test finishes, pass
+  or fail. This is this suite's setup/teardown convention for test content —
+  specs that create posts or pages should import `test`/`expect` from
+  `fixtures/wpPosts` and track what they create, rather than leaving it
+  behind for a long-lived instance to accumulate.
 
 Locator and method names mirror Gutenberg/WordPress's own accessible names
 ("Add title", "Add default block", "Editor publish") instead of inventing
@@ -64,13 +74,6 @@ The Accessibility Checker plugin's own dashboard summary widget
 plugin, not the theme, so `accessibility.spec.ts` excludes it rather than
 failing CI on something this repo can't fix. Update the selector if the
 plugin's markup changes, or drop the exclusion once it's fixed upstream.
-
-## Known gap: sitemap crawl grows with leftover test content
-
-`editor.spec.ts` publishes pages named `e2e-test-page-<timestamp>` and
-doesn't clean them up, so repeated local runs accumulate pages that the
-sitemap crawl will also scan. Harmless (just redundant coverage), but
-worth knowing if the sitemap test gets noticeably slower over time locally.
 
 ## Known gap: forked PRs fall back to the free ACF plugin
 
