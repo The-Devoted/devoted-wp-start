@@ -8,7 +8,7 @@ export class DashboardPage {
 
   constructor(private readonly page: Page) {
     this.adminBar = new AdminBar(page);
-    this.heading = page.getByRole('heading', { level: 1 });
+    this.heading = page.getByRole('heading', { level: 1 }).first();
   }
 
   async goto(): Promise<void> {

@@ -15,6 +15,9 @@ Small slice, core smoke coverage only:
   dashboard loads after login.
 - `specs/editor.spec.ts` — creates a page with a core Paragraph block and the
   theme's `devoted/example` block, publishes it, checks both render.
+- `specs/accessibility.spec.ts` — runs an [axe-core](https://www.npmjs.com/package/@axe-core/playwright)
+  WCAG 2.0/2.1 A/AA scan against the front page, login page, and admin
+  dashboard, failing on any violation.
 
 ## Page objects
 
@@ -29,6 +32,10 @@ implementation is repeatable and the suite's vocabulary matches the app's:
 - `fixtures/auth.ts` — a scenario-level helper (`loginAsAdmin`) built from
   `LoginPage`, for the "log in as the standard test admin" workflow used by
   `auth.setup.ts`.
+- `fixtures/accessibility.ts` — `expectNoAccessibilityViolations(page, exclude?)`,
+  a thin wrapper around `AxeBuilder` used by `accessibility.spec.ts`. The
+  `exclude` param takes CSS selectors for third-party plugin markup this
+  suite doesn't own (see "Known gap" below), not theme/core chrome.
 
 Locator and method names mirror Gutenberg/WordPress's own accessible names
 ("Add title", "Add default block", "Editor publish") instead of inventing
@@ -39,6 +46,15 @@ under `pages/` or `components/`, not new inline locators in a spec.
 
 Per-plugin checks (ACF fields, Yoast/Rank Math, login-security, cookie
 consent, etc.) are out of scope for now.
+
+## Known gap: dashboard a11y scan excludes the Accessibility Checker widget
+
+The Accessibility Checker plugin's own dashboard summary widget
+(`#edac_dashboard_scan_summary`) renders a progressbar that axe flags
+(missing accessible name, invalid `aria-valuenow="N/A"`) — a bug in that
+plugin, not the theme, so `accessibility.spec.ts` excludes it rather than
+failing CI on something this repo can't fix. Update the selector if the
+plugin's markup changes, or drop the exclusion once it's fixed upstream.
 
 ## Known gap: forked PRs fall back to the free ACF plugin
 
