@@ -1,16 +1,13 @@
 # Environment Variables
 .env
 
+# SSH deploy key used by db_utils.sh
+/.ssh
+
 # Local Utilities
 util.sh
 
-# Ignore database backups.
-/backups/db/*
-
-# Ignore asset backups.
-/backups/assets/*
-
-# Ignore entire backups directory.
+# Ignore database backups created by db_utils.sh.
 /backups
 
 # Ignore Caddy file server config on staging

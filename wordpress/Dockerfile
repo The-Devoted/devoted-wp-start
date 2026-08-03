@@ -11,6 +11,13 @@ RUN composer self-update
 # Install wp-cli so core upgrades/verification can run inside the container.
 COPY --from=wordpress:cli /usr/local/bin/wp /usr/local/bin/wp
 
+# Install a mysql client so `wp db export`/`wp db import` (used by
+# db_utils.sh) have a binary to shell out to — the base image doesn't bundle
+# one.
+RUN apt-get update \
+  && apt-get install -y --no-install-recommends default-mysql-client \
+  && rm -rf /var/lib/apt/lists/*
+
 # Install Node.js so custom blocks (authored in TypeScript under the theme's
 # `src` directory) can be compiled with @wordpress/scripts inside the container.
 COPY --from=node:22-trixie-slim /usr/local/bin/node /usr/local/bin/node
