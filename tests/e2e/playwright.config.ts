@@ -1,4 +1,16 @@
+import { existsSync } from 'node:fs';
+import path from 'node:path';
 import { defineConfig, devices } from '@playwright/test';
+
+// Load tests/e2e/.env (gitignored) before `./constants` reads process.env,
+// so local runs can override WP_ADMIN_USER/WP_ADMIN_PASSWORD/etc. without
+// exporting them in the shell. CI sets these directly in the environment
+// and doesn't check in a .env file, so this is a no-op there.
+const dotenvPath = path.join(__dirname, '.env');
+if (existsSync(dotenvPath)) {
+  process.loadEnvFile(dotenvPath);
+}
+
 import { BASE_URL, STORAGE_STATE } from './constants';
 
 export default defineConfig({

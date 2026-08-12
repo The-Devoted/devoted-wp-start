@@ -19,13 +19,20 @@ function isInstalled(): boolean {
  * MariaDB has finished initializing, so `wp core install` (and even `wp core
  * is-installed`) can fail transiently — this just keeps trying rather than
  * probing readiness a separate way.
+ *
+ * Returns whether this call actually created the install (`true`) or found
+ * one already there (`false`). An already-installed site may hold real
+ * plugin/theme/permalink config pulled from a remote environment (see
+ * `db_utils.sh` in the repo root) — the rest of setup uses this to decide
+ * whether it's safe to bootstrap defaults or whether doing so would
+ * overwrite that config.
  */
-async function ensureWordPressInstalled(): Promise<void> {
+async function ensureWordPressInstalled(): Promise<boolean> {
   const deadline = Date.now() + MAX_WAIT_MS;
   let lastError: unknown;
 
   while (Date.now() < deadline) {
-    if (isInstalled()) return;
+    if (isInstalled()) return false;
 
     try {
       const { origin } = new URL(BASE_URL);
@@ -39,7 +46,7 @@ async function ensureWordPressInstalled(): Promise<void> {
         '--admin_email=e2e@example.com',
         '--skip-email',
       ]);
-      return;
+      return true;
     } catch (error) {
       lastError = error;
       await new Promise((resolve) => setTimeout(resolve, POLL_INTERVAL_MS));
@@ -61,7 +68,9 @@ function hasPrettyPermalinks(): boolean {
  * which Yoast SEO's pretty sitemap URLs (`/post-sitemap.xml`, etc.) 404 —
  * only their `?sitemap=` query-var form resolves. Pretty permalinks are
  * also what real sites run, so this fixes the environment rather than
- * teaching the sitemap fixture to route around plain permalinks.
+ * teaching the sitemap fixture to route around plain permalinks. Only
+ * called for an install this run just created (see `globalSetup`) — an
+ * existing site's permalink structure is real config, not ours to change.
  */
 function ensurePrettyPermalinks(): void {
   if (hasPrettyPermalinks()) return;
@@ -83,18 +92,36 @@ function hasActiveAcf(): boolean {
  * get repo secrets, so fall back to the free version from wordpress.org just
  * so the site is up for these smoke tests. This suite doesn't assert on
  * ACF-specific behavior — see the specs README — it just needs *a* working
- * site.
+ * site. Only called for an install this run just created (see
+ * `globalSetup`).
  */
 function ensureAcfAvailable(): void {
   if (hasActiveAcf()) return;
   wp(['plugin', 'install', 'advanced-custom-fields', '--activate']);
 }
 
-export default async function globalSetup(): Promise<void> {
-  await ensureWordPressInstalled();
+/**
+ * Bootstraps a brand-new scratch WordPress install so the suite has
+ * something working to run against: turns on pretty permalinks, activates
+ * the theme and every installed plugin, and falls back to free ACF if
+ * nothing else provides it.
+ *
+ * Only called when `ensureWordPressInstalled` just created the install —
+ * an already-installed site (e.g. one refreshed via `db_utils.sh` from a
+ * remote environment) already holds real plugin/theme/permalink config,
+ * and this suite exists to test that environment's truth, not overwrite it
+ * to make tests pass.
+ */
+function bootstrapFreshInstall(): void {
   ensurePrettyPermalinks();
-
   wp(['theme', 'activate', 'devoted']);
   wp(['plugin', 'activate', '--all']);
   ensureAcfAvailable();
+}
+
+export default async function globalSetup(): Promise<void> {
+  const freshlyInstalled = await ensureWordPressInstalled();
+  if (freshlyInstalled) {
+    bootstrapFreshInstall();
+  }
 }

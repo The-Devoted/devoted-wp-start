@@ -6,9 +6,9 @@ type PostType = 'page' | 'post';
 
 /**
  * Gutenberg's block editor (`post-new.php`). Locator and method names mirror
- * Gutenberg's own accessible names ("Add title", "Add default block", the
- * slash inserter) so the suite's vocabulary matches what a reader would see
- * in the UI, rather than inventing parallel terminology.
+ * Gutenberg's own accessible names ("Rename", "Add default block", the slash
+ * inserter) so the suite's vocabulary matches what a reader would see in the
+ * UI, rather than inventing parallel terminology.
  */
 export class BlockEditorPage {
   /**
@@ -18,15 +18,24 @@ export class BlockEditorPage {
    * detail, not an accessibility one).
    */
   readonly canvas: FrameLocator;
-  readonly titleField: Locator;
-  readonly addDefaultBlockButton: Locator;
+  readonly emptyBlock: Locator;
   readonly publishButton: Locator;
   readonly publishPanel: PublishPanel;
 
   constructor(private readonly page: Page) {
     this.canvas = page.frameLocator('iframe[title="Editor canvas"]');
-    this.titleField = this.canvas.getByRole('textbox', { name: 'Add title' });
-    this.addDefaultBlockButton = this.canvas.getByRole('button', { name: 'Add default block' });
+    // A brand-new post/page's content area starts as either an unfocused
+    // "Add default block" appender button, or (once something in the canvas
+    // has already taken focus) the empty paragraph block it inserts on
+    // click — both are real Gutenberg states for the same empty starting
+    // point, so match whichever is present rather than assuming one.
+    this.emptyBlock = this.canvas
+      .getByRole('button', { name: 'Add default block' })
+      .or(
+        this.canvas.getByRole('document', {
+          name: 'Empty block; start writing or type forward slash to choose a block',
+        }),
+      );
     this.publishButton = page.getByRole('button', { name: 'Publish', exact: true });
     this.publishPanel = new PublishPanel(page);
   }
@@ -36,20 +45,46 @@ export class BlockEditorPage {
     await this.dismissWelcomeGuide();
   }
 
-  /** Dismisses the "Welcome to the block editor" tips dialog if it appears. */
+  /**
+   * Dismisses the "Welcome to the block editor" tips dialog if it appears.
+   * Matched with `exact: true` — without it, this substring-matches the
+   * settings sidebar's own "Close Settings" toggle when that sidebar
+   * happens to already be open (a per-user preference persisted across
+   * test runs), closing the sidebar instead of a dialog that isn't there.
+   */
   async dismissWelcomeGuide(): Promise<void> {
-    const closeButton = this.page.getByRole('button', { name: 'Close' });
+    const closeButton = this.page.getByRole('button', { name: 'Close', exact: true });
     if (await closeButton.isVisible().catch(() => false)) {
       await closeButton.click();
     }
   }
 
+  /**
+   * Whether the settings sidebar (the "Page"/"Block" tabs housing the
+   * "Actions" menu) starts open depends on a per-user persisted preference —
+   * closed by default for a user who's never opened the editor before, open
+   * for one who has and left it that way. Open it if needed rather than
+   * assuming either state.
+   */
+  async ensureSettingsSidebarOpen(): Promise<void> {
+    const pageTab = this.page.getByRole('tab', { name: 'Page', exact: true });
+    if (!(await pageTab.isVisible().catch(() => false))) {
+      await this.page.getByRole('button', { name: 'Settings', exact: true }).click();
+      await expect(pageTab).toBeVisible();
+    }
+  }
+
   async setTitle(title: string): Promise<void> {
-    await this.titleField.fill(title);
+    await this.ensureSettingsSidebarOpen();
+    await this.page.getByRole('button', { name: 'Actions' }).click();
+    await this.page.getByRole('menuitem', { name: 'Rename' }).click();
+    const renameDialog = this.page.getByRole('dialog', { name: 'Rename' });
+    await renameDialog.getByRole('textbox', { name: 'Name' }).fill(title);
+    await renameDialog.getByRole('button', { name: 'Save' }).click();
   }
 
   async addParagraph(text: string): Promise<void> {
-    await this.addDefaultBlockButton.click();
+    await this.emptyBlock.click();
     await this.page.keyboard.type(text);
   }
 

@@ -74,6 +74,20 @@ The Accessibility Checker plugin's own dashboard summary widget
 plugin, not the theme, so `accessibility.spec.ts` excludes it rather than
 failing CI on something this repo can't fix. Update the selector if the
 plugin's markup changes, or drop the exclusion once it's fixed upstream.
+Converter for Media's dismissible "thanks" notice
+(`[data-notice="webp-converter-for-media"]`) is excluded for the same
+reason — its "Hide and do not show again" button fails color-contrast.
+
+## Known gap: sitemap a11y crawl skips the bundled "Website User Guide"
+
+`/website-user-guide/` and its subpages are onboarding documentation that
+ships with the starter kit, not theme or environment code — their demo
+content has its own pre-existing issues (a `<marquee>`, low-contrast example
+text, a non-focusable scrollable region) that are content to fix, not
+something this suite should gate CI on. `accessibility.spec.ts` filters any
+sitemap URL containing `/website-user-guide/` out of the crawl. Drop the
+filter if that content gets cleaned up, or narrow it further if only some
+subpages are fixed.
 
 ## Known gap: forked PRs fall back to the free ACF plugin
 
@@ -92,11 +106,14 @@ assert on ACF-specific behavior, so the fallback is fine for smoke coverage
 2. `npm install` (first time only).
 3. `npm test`.
 
-`global-setup.ts` waits for WordPress to be ready, runs an idempotent
-`wp core install` with fixed test credentials, switches permalinks to
-`/%postname%/` (a fresh install defaults to plain `?p=123` permalinks,
-under which Yoast SEO's sitemap URLs 404), activates the `devoted` theme
-and installed plugins, and ensures ACF is available.
+`global-setup.ts` waits for WordPress to be ready, then checks whether it's
+installed yet. If it isn't — a brand-new scratch container — it runs
+`wp core install` with fixed test credentials and bootstraps a working site:
+switches permalinks to `/%postname%/` (a fresh install defaults to plain
+`?p=123` permalinks, under which Yoast SEO's sitemap URLs 404), activates
+the `devoted` theme and installed plugins, and ensures ACF is available. If
+WordPress is already installed, none of that bootstrapping runs — see
+"Running against a pulled/real environment" below.
 
 | Var | Default | Purpose |
 |---|---|---|
@@ -104,6 +121,22 @@ and installed plugins, and ensures ACF is available.
 | `WP_ADMIN_USER` | `admin` | Test admin username |
 | `WP_ADMIN_PASSWORD` | `password` | Test admin password |
 | `WP_CONTAINER_NAME` | `wordpress` | Docker container `wp exec` runs against |
+
+## Running against a pulled/real environment
+
+`WP_BASE_URL`/`WP_CONTAINER_NAME` can point this suite at a local
+environment refreshed from a remote one with `db_utils.sh` (see root
+README) instead of a scratch container. The goal there is to test that
+environment's truth, not adulterate it to make tests pass — so
+`global-setup.ts` only bootstraps theme/plugin activation, permalinks, and
+the ACF fallback for a container it installs WordPress into itself. Once
+`wp core is-installed` is already true (as it will be right after a DB
+pull — active theme, active plugins, and permalink structure all live in
+the database `db_utils.sh` exports), setup skips all of that and leaves the
+pulled config exactly as it is. `WP_ADMIN_USER`/`WP_ADMIN_PASSWORD` still
+need to match a real account on that environment for `auth.setup.ts` to log
+in — the fixed `admin`/`password` defaults only apply to a scratch
+install.
 
 Other commands:
 
