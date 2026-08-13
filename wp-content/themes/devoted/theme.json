@@ -5,37 +5,32 @@
         {
             "name": "page-landing",
             "title": "Landing Page",
-            "postTypes": [
-                "page"
-            ]
+            "postTypes": ["page"]
         },
         {
             "name": "page-landing-no-title",
             "title": "Landing Page - No Title",
-            "postTypes": [
-                "page"
-            ]
+            "postTypes": ["page"]
         },
         {
             "name": "page-landing-blank",
             "title": "Landing Page - Blank",
-            "postTypes": [
-                "page"
-            ]
+            "postTypes": ["page"]
+        },
+        {
+            "name": "page-full-nav",
+            "title": "Single Page - Full Sidebar Nav",
+            "postTypes": ["page"]
         },
         {
             "name": "page-no-sidebar",
             "title": "Single Page - No Sidebar",
-            "postTypes": [
-                "page"
-            ]
+            "postTypes": ["page"]
         },
         {
             "name": "single-no-sidebar",
             "title": "Single Post - No Sidebar",
-            "postTypes": [
-                "post"
-            ]
+            "postTypes": ["post"]
         }
     ],
     "templateParts": [

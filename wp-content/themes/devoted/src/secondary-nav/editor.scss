@@ -1,0 +1,8 @@
+/* Styles applied only inside the block editor. Compiled to build/index.css. */
+
+/* Extra breathing room between the "Secondary Nav Contents" help text and
+   the "Hide from secondary navigation" toggle in the Document Settings
+   panel — scoped to this panel so it doesn't affect other controls. */
+.dvo--secondary-nav-panel .components-toggle-control {
+	margin-top: 24px;
+}

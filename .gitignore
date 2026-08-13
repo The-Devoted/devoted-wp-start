@@ -40,7 +40,7 @@ wp-config.php
 *.log
 
 # htaccess
-/.htaccess
+.htaccess
 
 # All plugins
 /wp-content/plugins

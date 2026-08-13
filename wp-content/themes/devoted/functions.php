@@ -5,6 +5,11 @@
  * @author  The Devoted / Jenny Slaughter
  */
 
+require_once get_theme_file_path( 'inc/helpers.php' );
+require_once get_theme_file_path( 'inc/patterns.php' );
+require_once get_theme_file_path( 'inc/blocks.php' );
+require_once get_theme_file_path( 'inc/secondary-nav.php' );
+
 if ( ! function_exists( 'devoted_setup' ) ) {
 
 	/**
@@ -102,11 +107,11 @@ function devoted_register_block_styles() {
 
 		),
         'core/list' => array(
-            'dvo-list-no-indent' => __( 'No Indent', 'devoted' ),
-            'dvo-list-tight' => __( 'Tight', 'devoted' ),
-            'dvo-list-tight-no-indent' => __( 'Tight No Indent', 'devoted' ),
-            'dvo-list-loose' => __( 'Loose', 'devoted' ),
-            'dvo-list-loose-no-indent' => __( 'Loose No Indent', 'devoted' ),
+            'dvo--list-no-indent' => __( 'No Indent', 'devoted' ),
+            'dvo--list-tight' => __( 'Tight', 'devoted' ),
+            'dvo--list-tight-no-indent' => __( 'Tight No Indent', 'devoted' ),
+            'dvo--list-loose' => __( 'Loose', 'devoted' ),
+            'dvo--list-loose-no-indent' => __( 'Loose No Indent', 'devoted' ),
 		),
 	);
 
@@ -165,84 +170,3 @@ function devoted_enqueue_block_styles() {
 }
 
 add_action( 'init', 'devoted_enqueue_block_styles' );
-
-
-/**
- * Register block pattern categories.
- *
- */
-function devoted_register_block_pattern_categories() {
-
-	register_block_pattern_category(
-		'devoted-landing',
-		array(
-			'label'       => __( 'Landing', 'devoted' ),
-			'description' => __( 'Patterns for Landing Pages', 'devoted' ),
-		)
-	);
-    register_block_pattern_category(
-	'devoted-site',
-		array(
-			'label'       => __( 'Site', 'devoted' ),
-			'description' => __( 'Site building pieces such as global header and footer', 'devoted' ),
-		)
-	);
-	register_block_pattern_category(
-		'devoted-text',
-		array(
-			'label'       => __( 'Text', 'devoted' ),
-			'description' => __( 'Text-based patterns.', 'devoted' ),
-		)
-	);
-
-}
-
-add_action( 'init', 'devoted_register_block_pattern_categories' );
-
-/**
- * Get Ancestor IDs
- *
- * Given an entry ID, return an array of the IDs of the entry's ancestors in
- * ascending order (closest ancestor to the entry first, furthest/top-level
- * entry last in the array).
- */
-function devoted_get_ancestor_ids($post_ID) {
-
-	$ancestors = [];
-	$parent = wp_get_post_parent_id($post_ID);
-
-	// If a page has no ancestor, wp_get_post_parent_id returns 0.
-	while ($parent != 0) {
-		$ancestors[] = $parent;
-		$parent = wp_get_post_parent_id($parent);
-	}
-
-	return $ancestors;
-}
-add_action('init', 'devoted_get_ancestor_ids');
-
-/**
- * Register custom blocks.
- *
- * Blocks are authored in TypeScript under `src/<block>/` and compiled to
- * `build/<block>/` by @wordpress/scripts (`npm run build`). Every compiled
- * block that ships a `block.json` is registered automatically, so adding a new
- * block only requires creating a new folder under `src/` — no change here.
- *
- * @return void
- */
-function devoted_register_blocks() {
-
-	$build_dir = get_theme_file_path( 'build' );
-
-	if ( ! is_dir( $build_dir ) ) {
-		return;
-	}
-
-	foreach ( glob( $build_dir . '/*', GLOB_ONLYDIR ) as $block_dir ) {
-		if ( file_exists( $block_dir . '/block.json' ) ) {
-			register_block_type( $block_dir );
-		}
-	}
-}
-add_action( 'init', 'devoted_register_blocks' );
