@@ -11,7 +11,7 @@ if (existsSync(dotenvPath)) {
   process.loadEnvFile(dotenvPath);
 }
 
-import { BASE_URL, STORAGE_STATE } from './constants';
+import { BASE_URL } from './constants';
 
 export default defineConfig({
   testDir: './specs',
@@ -30,13 +30,8 @@ export default defineConfig({
   },
   projects: [
     {
-      name: 'setup',
-      testMatch: /.*\.setup\.ts/,
-    },
-    {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'], storageState: STORAGE_STATE },
-      dependencies: ['setup'],
+      use: { ...devices['Desktop Chrome'] },
     },
   ],
 });

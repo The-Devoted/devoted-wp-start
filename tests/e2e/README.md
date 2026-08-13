@@ -7,34 +7,26 @@ changes) before they hit production. Separate npm package from
 
 ## Scope
 
-Small slice, core smoke coverage only:
+Small slice, core smoke coverage only, against anonymously accessible pages
+— no spec logs in or exercises wp-admin:
 
-- `specs/auth.setup.ts` — logs in as the test admin once; other specs reuse
-  that session via Playwright's `storageState`.
-- `specs/smoke.spec.ts` — front page renders for an anonymous visitor, admin
-  dashboard loads after login.
-- `specs/editor.spec.ts` — creates a page with a core Paragraph block and the
-  theme's `devoted/example` block, publishes it, checks both render.
+- `specs/smoke.spec.ts` — front page renders for an anonymous visitor.
 - `specs/accessibility.spec.ts` — runs an [axe-core](https://www.npmjs.com/package/@axe-core/playwright)
-  WCAG 2.0/2.1 A/AA scan against the front page, login page, and admin
-  dashboard, failing on any violation. It also crawls every URL listed in
-  the site's sitemap (`fixtures/sitemap.ts`) and scans each one, reporting
-  every offending URL and its violations together rather than failing on
-  the first bad page.
+  WCAG 2.0/2.1 A/AA scan against the front page, failing on any violation. It
+  also crawls every URL listed in the site's sitemap (`fixtures/sitemap.ts`)
+  and scans each one, reporting every offending URL and its violations
+  together rather than failing on the first bad page. The login page isn't
+  covered here — a login-security plugin can move it off a fixed URL, so
+  it's not a stable target for this suite.
 
 ## Page objects
 
 Specs drive the site through page objects rather than raw locators, so
 implementation is repeatable and the suite's vocabulary matches the app's:
 
-- `pages/` — one class per discrete screen (`LoginPage`, `DashboardPage`,
-  `FrontEndPage`, `BlockEditorPage`). Each exposes locators and actions for
-  that screen; specs compose them and keep the `expect()` assertions.
-- `components/` — reusable pieces embedded in more than one page
-  (`AdminBar`, `PublishPanel`).
-- `fixtures/auth.ts` — a scenario-level helper (`loginAsAdmin`) built from
-  `LoginPage`, for the "log in as the standard test admin" workflow used by
-  `auth.setup.ts`.
+- `pages/` — one class per discrete screen (`FrontEndPage`). Each exposes
+  locators and actions for that screen; specs compose them and keep the
+  `expect()` assertions.
 - `fixtures/accessibility.ts` — `expectNoAccessibilityViolations(page, exclude?)`,
   a thin wrapper around `AxeBuilder` used by `accessibility.spec.ts`. The
   `exclude` param takes CSS selectors for third-party plugin markup this
@@ -46,37 +38,19 @@ implementation is repeatable and the suite's vocabulary matches the app's:
   index (Yoast SEO's `/sitemap_index.xml` by default) and returns every page
   URL it lists, recursing into nested per-post-type sitemaps.
 - `fixtures/wpCli.ts` — `wp(args)`, runs a `wp` CLI command inside the
-  WordPress container (shared by `global-setup.ts` and `fixtures/wpPosts.ts`).
-- `fixtures/wpPosts.ts` — a [Playwright test fixture](https://playwright.dev/docs/test-fixtures)
-  (`test`/`expect` re-exported from here, in place of `@playwright/test`) that
-  adds a `trackPost(postId)` fixture: register any post/page a test creates
-  and it's deleted via `wp post delete --force` once the test finishes, pass
-  or fail. This is this suite's setup/teardown convention for test content —
-  specs that create posts or pages should import `test`/`expect` from
-  `fixtures/wpPosts` and track what they create, rather than leaving it
-  behind for a long-lived instance to accumulate.
+  WordPress container. Used by `global-setup.ts` to bootstrap the environment.
 
-Locator and method names mirror Gutenberg/WordPress's own accessible names
-("Add title", "Add default block", "Editor publish") instead of inventing
-parallel terminology, so the code stays legible against the actual UI.
+Locator and method names mirror WordPress's own accessible names instead of
+inventing parallel terminology, so the code stays legible against the
+actual UI.
 
-Adding coverage for a new screen or component should mean adding a class
-under `pages/` or `components/`, not new inline locators in a spec.
+Adding coverage for a new anonymously accessible screen should mean adding a
+class under `pages/`, not new inline locators in a spec. This suite doesn't
+cover wp-admin or any screen that requires being logged in — see "Scope"
+above.
 
 Per-plugin checks (ACF fields, Yoast/Rank Math, login-security, cookie
 consent, etc.) are out of scope for now.
-
-## Known gap: dashboard a11y scan excludes the Accessibility Checker widget
-
-The Accessibility Checker plugin's own dashboard summary widget
-(`#edac_dashboard_scan_summary`) renders a progressbar that axe flags
-(missing accessible name, invalid `aria-valuenow="N/A"`) — a bug in that
-plugin, not the theme, so `accessibility.spec.ts` excludes it rather than
-failing CI on something this repo can't fix. Update the selector if the
-plugin's markup changes, or drop the exclusion once it's fixed upstream.
-Converter for Media's dismissible "thanks" notice
-(`[data-notice="webp-converter-for-media"]`) is excluded for the same
-reason — its "Hide and do not show again" button fails color-contrast.
 
 ## Known gap: sitemap a11y crawl skips the bundled "Website User Guide"
 
@@ -118,9 +92,12 @@ WordPress is already installed, none of that bootstrapping runs — see
 | Var | Default | Purpose |
 |---|---|---|
 | `WP_BASE_URL` | `http://localhost:8000` | Site under test |
-| `WP_ADMIN_USER` | `admin` | Test admin username |
-| `WP_ADMIN_PASSWORD` | `password` | Test admin password |
+| `WP_ADMIN_USER` | `admin` | Admin username `wp core install` bootstraps a scratch install with |
+| `WP_ADMIN_PASSWORD` | `password` | Admin password `wp core install` bootstraps a scratch install with |
 | `WP_CONTAINER_NAME` | `wordpress` | Docker container `wp exec` runs against |
+
+`WP_ADMIN_USER`/`WP_ADMIN_PASSWORD` only matter for a brand-new scratch
+install — no spec logs in, so they're otherwise unused.
 
 ## Running against a pulled/real environment
 
@@ -133,10 +110,7 @@ the ACF fallback for a container it installs WordPress into itself. Once
 `wp core is-installed` is already true (as it will be right after a DB
 pull — active theme, active plugins, and permalink structure all live in
 the database `db_utils.sh` exports), setup skips all of that and leaves the
-pulled config exactly as it is. `WP_ADMIN_USER`/`WP_ADMIN_PASSWORD` still
-need to match a real account on that environment for `auth.setup.ts` to log
-in — the fixed `admin`/`password` defaults only apply to a scratch
-install.
+pulled config exactly as it is.
 
 Other commands:
 
