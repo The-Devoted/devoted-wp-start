@@ -1,16 +1,13 @@
 # Environment Variables
 .env
 
+# SSH deploy key used by db_utils.sh
+/.ssh
+
 # Local Utilities
 util.sh
 
-# Ignore database backups.
-/backups/db/*
-
-# Ignore asset backups.
-/backups/assets/*
-
-# Ignore entire backups directory.
+# Ignore database backups created by db_utils.sh.
 /backups
 
 # Ignore Caddy file server config on staging
@@ -71,6 +68,12 @@ node_modules
 # --------------------------
 # Built from the theme's `src` directory via @wordpress/scripts (`npm run build`).
 /wp-content/themes/devoted/build/
+
+# Playwright e2e test output.
+# --------------------------
+/tests/e2e/test-results/
+/tests/e2e/playwright-report/
+/tests/e2e/.auth/
 
 # Sass.
 # --------------------------

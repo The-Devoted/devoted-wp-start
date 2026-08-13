@@ -21,7 +21,6 @@ export default function Edit({ attributes, setAttributes }: EditProps) {
 
   return (
     <div>
-      hello?
       <RichText
         {...blockProps}
         tagName="p"

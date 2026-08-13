@@ -145,6 +145,41 @@ docker exec -u www-data wordpress wp search-replace old.example.com localhost:80
 For an interactive session, open a shell first
 (`docker exec -it -u www-data wordpress bash`) and run `wp ...` directly.
 
+### Pulling data from the remote server
+
+`db_utils.sh` refreshes your local database and `wp-content/uploads` from the
+Digital Ocean droplet, using wp-cli on both ends (so no DB credentials live in
+the script or `.env`) and `rsync` for assets.
+
+1. **Set the required variables** in `.env` (see `.env.template`):
+   `DO_DROPLET_HOST`, `DO_DROPLET_USERNAME`, `DOMAIN_NAME`, `REMOTE_APP_DIR`,
+   `LOCAL_URL`.
+
+2. **Add a deploy key.** The script looks for a private key at `./.ssh/deploy_key`
+   in the repo root (git-ignored — never commit it). Generate one and add the
+   public half to `~DO_DROPLET_USERNAME/.ssh/authorized_keys` on the droplet
+   (e.g. via the DigitalOcean web console):
+
+   ```sh
+   ssh-keygen -t ed25519 -C "db_utils.sh deploy key" -f ./.ssh/deploy_key
+   chmod 600 ./.ssh/deploy_key
+   cat ./.ssh/deploy_key.pub   # paste this into authorized_keys on the droplet
+   ```
+
+3. **Run a task:**
+
+   ```sh
+   bash db_utils.sh db_pull      # pull + import the remote database, rewrite URLs for local dev
+   bash db_utils.sh assets_pull  # rsync wp-content/uploads from the remote server
+   bash db_utils.sh dev          # both of the above, in order
+   ```
+
+   `db_pull` exports the remote DB with `wp db export`, streams it straight
+   into the local container with `wp db import` (keeping a timestamped copy
+   under `backups/db/`), then runs `wp search-replace` to swap the remote
+   domain for `LOCAL_URL` — safe for PHP-serialized data, unlike a raw
+   find/replace on the SQL dump.
+
 ### Custom blocks (TypeScript)
 
 Custom Gutenberg blocks are authored in **TypeScript** and compiled with
@@ -193,6 +228,21 @@ On deploy, blocks are compiled inside the container (the WordPress image now
 includes Node.js): the workflow rebuilds the image and runs
 `npm ci && npm run build` against the theme. Because `build/` is git-ignored,
 committing a change to a block means committing the `src/` change only.
+
+### End-to-end testing
+
+[Playwright](https://playwright.dev) smoke tests live in `tests/e2e/`, a
+separate npm package from the theme. With the Docker stack running:
+
+```sh
+cd tests/e2e
+npm install       # first time only
+npm test
+```
+
+See [`tests/e2e/README.md`](tests/e2e/README.md) for scope, environment
+variables, and how this runs in CI (`.github/workflows/test.yml`, on pull
+requests and pushes to `main`).
 
 ### Managing plugins and dependencies
 
