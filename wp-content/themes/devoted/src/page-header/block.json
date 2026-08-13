@@ -1,0 +1,49 @@
+{
+    "$schema": "https://schemas.wp.org/trunk/block.json",
+    "apiVersion": 3,
+    "name": "devoted/page-header",
+    "version": "0.1.0",
+    "title": "Page Header",
+    "category": "seventy-theme",
+    "icon": "cover-image",
+    "description": "Site-wide page header. Shows the appropriate title/label and breadcrumbs for the current template context (page, post, custom post type, archive, search, or 404).",
+    "textdomain": "devoted",
+    "supports": {
+        "html": false,
+        "color": {
+            "background": true,
+            "text": true
+        },
+        "spacing": {
+            "padding": true
+        }
+    },
+    "attributes": {
+        "variant": {
+            "type": "string",
+            "enum": ["page", "post", "cpt", "archive", "search", "404"],
+            "default": "page"
+        },
+        "label": {
+            "type": "string",
+            "default": ""
+        },
+        "showExcerpt": {
+            "type": "boolean",
+            "default": true
+        },
+        "separator": {
+            "type": "string",
+            "default": ">"
+        }
+    },
+    "styles": [
+        { "name": "default", "label": "Default", "isDefault": true },
+        { "name": "alternate", "label": "Alternate" }
+    ],
+    "example": {},
+    "render": "file:./render.php",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style-index.css"
+}
