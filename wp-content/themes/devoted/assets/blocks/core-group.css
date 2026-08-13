@@ -3,12 +3,12 @@
 /* All containers which should not have block-gap, including:
 /*      - Landing Pages
 /*      - Top level elements of all templates
-/*      - Any block with .dvo-gapless
+/*      - Any block with .dvo--gapless
 /* --------------------------------------- */
 .wp-site-blocks > *,
-main.dvo-gapless,
-main.dvo-gapless + footer,
-.dvo-gapless .entry-content > *,
-:has(+ .dvo-gapless) {
+main.dvo--gapless,
+main.dvo--gapless + footer,
+.dvo--gapless .entry-content > *,
+:has(+ .dvo--gapless) {
     margin-block-start: 0;
 }

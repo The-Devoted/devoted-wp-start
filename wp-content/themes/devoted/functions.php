@@ -107,11 +107,11 @@ function devoted_register_block_styles() {
 
 		),
         'core/list' => array(
-            'dvo-list-no-indent' => __( 'No Indent', 'devoted' ),
-            'dvo-list-tight' => __( 'Tight', 'devoted' ),
-            'dvo-list-tight-no-indent' => __( 'Tight No Indent', 'devoted' ),
-            'dvo-list-loose' => __( 'Loose', 'devoted' ),
-            'dvo-list-loose-no-indent' => __( 'Loose No Indent', 'devoted' ),
+            'dvo--list-no-indent' => __( 'No Indent', 'devoted' ),
+            'dvo--list-tight' => __( 'Tight', 'devoted' ),
+            'dvo--list-tight-no-indent' => __( 'Tight No Indent', 'devoted' ),
+            'dvo--list-loose' => __( 'Loose', 'devoted' ),
+            'dvo--list-loose-no-indent' => __( 'Loose No Indent', 'devoted' ),
 		),
 	);
 
