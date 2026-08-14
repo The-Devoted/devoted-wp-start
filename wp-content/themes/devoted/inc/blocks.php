@@ -27,22 +27,36 @@ add_action( 'init', 'devoted_register_blocks' );
 
 /**
  * Register the "Devoted Theme" block category for the theme's custom blocks
- * (devoted/page-header, devoted/secondary-nav, etc.).
+ * (devoted/page-header, devoted/secondary-nav, etc.), positioned right
+ * after WordPress's built-in "Theme" category (and so before "Embeds") in
+ * the block inserter, rather than at the end of the list.
  *
  * @param array $categories Registered block categories.
  * @return array
  */
 function devoted_register_block_categories( $categories ) {
 
-	return array_merge(
-		$categories,
-		array(
-			array(
-				'slug'  => 'devoted-theme',
-				'title' => __( 'Devoted Theme', 'devoted' ),
-				'icon'  => null,
-			),
-		)
+	$devoted_category = array(
+		'slug'  => 'devoted-theme',
+		'title' => __( 'Devoted Theme', 'devoted' ),
+		'icon'  => null,
 	);
+
+	$theme_index = null;
+	foreach ( $categories as $index => $category ) {
+		if ( 'theme' === $category['slug'] ) {
+			$theme_index = $index;
+			break;
+		}
+	}
+
+	if ( null === $theme_index ) {
+		$categories[] = $devoted_category;
+		return $categories;
+	}
+
+	array_splice( $categories, $theme_index + 1, 0, array( $devoted_category ) );
+
+	return $categories;
 }
 add_filter( 'block_categories_all', 'devoted_register_block_categories' );
