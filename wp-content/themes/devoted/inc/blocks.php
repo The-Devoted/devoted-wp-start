@@ -26,7 +26,7 @@ function devoted_register_blocks() {
 add_action( 'init', 'devoted_register_blocks' );
 
 /**
- * Register the "Seventy Theme" block category for the theme's custom blocks
+ * Register the "Devoted Theme" block category for the theme's custom blocks
  * (devoted/page-header, devoted/secondary-nav, etc.).
  *
  * @param array $categories Registered block categories.
@@ -38,8 +38,8 @@ function devoted_register_block_categories( $categories ) {
 		$categories,
 		array(
 			array(
-				'slug'  => 'seventy-theme',
-				'title' => __( 'Seventy Theme', 'devoted' ),
+				'slug'  => 'devoted-theme',
+				'title' => __( 'Devoted Theme', 'devoted' ),
 				'icon'  => null,
 			),
 		)

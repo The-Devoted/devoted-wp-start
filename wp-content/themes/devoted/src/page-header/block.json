@@ -4,7 +4,7 @@
     "name": "devoted/page-header",
     "version": "0.1.0",
     "title": "Page Header",
-    "category": "seventy-theme",
+    "category": "devoted-theme",
     "icon": "cover-image",
     "description": "Site-wide page header. Shows the appropriate title/label and breadcrumbs for the current template context (page, post, custom post type, archive, search, or 404).",
     "textdomain": "devoted",
