@@ -1,1 +1,9 @@
 /* Styles applied only inside the block editor. Compiled to build/index.css. */
+
+/* core/post-excerpt falls back to an auto-generated excerpt when a page has
+   no manual excerpt — render.php never shows that on the front end (it
+   checks has_excerpt()), so hide it here too unless a manual excerpt
+   actually exists. See edit.tsx for how this class gets applied. */
+.dvo--page-header:not(.dvo--page-header--has-excerpt) .wp-block-post-excerpt {
+	display: none;
+}

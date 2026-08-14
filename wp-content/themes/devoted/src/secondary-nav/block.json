@@ -4,7 +4,7 @@
     "name": "devoted/secondary-nav",
     "version": "0.1.0",
     "title": "Secondary Navigation",
-    "category": "seventy-theme",
+    "category": "devoted-theme",
     "icon": "list-view",
     "description": "Displays the current page's section navigation: a link to the section's top-level page, then either a single-link trail through intermediate ancestors plus the current page's siblings (\"trail\", default), or the entire nested tree under the section root (\"full\").",
     "textdomain": "devoted",
