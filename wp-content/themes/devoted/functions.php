@@ -5,10 +5,10 @@
  * @author  The Devoted / Jenny Slaughter
  */
 
-require_once get_theme_file_path( 'inc/helpers.php' );
-require_once get_theme_file_path( 'inc/patterns.php' );
-require_once get_theme_file_path( 'inc/blocks.php' );
-require_once get_theme_file_path( 'inc/secondary-nav.php' );
+require_once get_parent_theme_file_path( 'inc/helpers.php' );
+require_once get_parent_theme_file_path( 'inc/patterns.php' );
+require_once get_parent_theme_file_path( 'inc/blocks.php' );
+require_once get_parent_theme_file_path( 'inc/secondary-nav.php' );
 
 if ( ! function_exists( 'devoted_setup' ) ) {
 
