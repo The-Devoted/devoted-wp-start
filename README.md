@@ -307,3 +307,5 @@ The deployment action does the following:
 4. Runs a Composer update within the WordPress container `docker exec wordpress composer update`.
 5. Rebuilds and runs the theme's npm dependencies within the WordPress container
    `docker exec wordpress sh -c "cd /var/www/html/wp-content/themes/devoted && npm ci && npm run build"`.
+
+---
