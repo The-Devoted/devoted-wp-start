@@ -59,24 +59,6 @@ async function ensureWordPressInstalled(): Promise<boolean> {
   );
 }
 
-function hasPrettyPermalinks(): boolean {
-  return wp(['option', 'get', 'permalink_structure']).trim().length > 0;
-}
-
-/**
- * A fresh `wp core install` defaults to plain `?p=123` permalinks, under
- * which Yoast SEO's pretty sitemap URLs (`/post-sitemap.xml`, etc.) 404 —
- * only their `?sitemap=` query-var form resolves. Pretty permalinks are
- * also what real sites run, so this fixes the environment rather than
- * teaching the sitemap fixture to route around plain permalinks. Only
- * called for an install this run just created (see `globalSetup`) — an
- * existing site's permalink structure is real config, not ours to change.
- */
-function ensurePrettyPermalinks(): void {
-  if (hasPrettyPermalinks()) return;
-  wp(['rewrite', 'structure', '/%postname%/', '--hard']);
-}
-
 function hasActiveAcf(): boolean {
   const active = wp(['plugin', 'list', '--status=active', '--field=name']);
   return active
@@ -102,18 +84,15 @@ function ensureAcfAvailable(): void {
 
 /**
  * Bootstraps a brand-new scratch WordPress install so the suite has
- * something working to run against: turns on pretty permalinks, activates
- * the theme and every installed plugin, and falls back to free ACF if
- * nothing else provides it.
+ * something working to run against: activates the theme and every
+ * installed plugin, and falls back to free ACF if nothing else provides it.
  *
  * Only called when `ensureWordPressInstalled` just created the install —
- * an already-installed site (e.g. one refreshed via `db_utils.sh` from a
- * remote environment) already holds real plugin/theme/permalink config,
- * and this suite exists to test that environment's truth, not overwrite it
- * to make tests pass.
+ * an already-installed site (e.g. one refreshed from a remote environment)
+ * already holds real plugin/theme/permalink config, and this suite exists
+ * to test that environment's truth, not overwrite it to make tests pass.
  */
 function bootstrapFreshInstall(): void {
-  ensurePrettyPermalinks();
   wp(['theme', 'activate', 'devoted']);
   wp(['plugin', 'activate', '--all']);
   ensureAcfAvailable();
