@@ -16,19 +16,7 @@ No tests perform logins to the site. Only publicly-accessible pages are tested.
 
 `specs/accessibility.spec.ts` runs an
   [axe-core](https://www.npmjs.com/package/@axe-core/playwright) WCAG 2.0/2.1
-  A/AA scan. When a violation is found, it's added to a report and testing
-  continues until all required pages are scanned.
-  
-The following pages/templates are tested:
-
-- Homepage
-- Any pages linked in the Main Navigation. See [Navigation](#navigation).
-- Structural templates such as:
-  - Single Posts
-  - Taxonomy Archives
-  - Search Results
-  - 404
-- An optional manual list of pages. See [Structural Pages](#structural-pages).
+  A/AA scan of the homepage.
 
 The following are **not** tested:
 
@@ -62,37 +50,14 @@ The following are **not** tested:
 - Location: `fixtures/wpCli.ts`
 - Exported function: `wp(args)`
 - Runs a `wp` CLI command inside the WordPress container.
-- Used by `global-setup.ts` to bootstrap the environment, and by
-  `fixtures/structuralPages.ts`.
+- Used by `global-setup.ts` to bootstrap the environment.
 
 ### Accessibility
 
 - Location: `fixtures/accessibility.ts`
-- Exported functions:
-  - `expectNoAccessibilityViolations(page, exclude?)`
-    - A thin wrapper around `AxeBuilder` used by `accessibility.spec.ts`.
-    - The `exclude` param takes CSS selectors for regions to skip.
-  - `getAccessibilityViolations` returns violations instead of asserting on them,
-  so a caller can keep going instead of stopping at the first bad page.
-  - `summarizeAccessibilityViolations` turns one page’s violations into readable
-  text. The spec then collects one of these per URL and joins them into the
-  single final report.
-
-### Navigation
-
-- Location: `fixtures/navigation.ts`
-- Exported function: `getPrimaryNavUrls(page)`
-- Identifies the site's main navigation via the selector `header.site-header nav a[href]`.
-- Reads the internal links out of that identified main nav.
-
-### Structural Pages
-
-- Location: `fixtures/structuralPages.ts`
-- Exported function: `getStructuralScanUrls()`
-- Resolves live via wp-cli, so the accessibility scan reaches structural page templates.
-  - See [Accessibility Scan](#accessibility-scan) for a full list.
-- Anything it can't resolve is left out. For example, a taxonomy with no terms in use yet.
-- `MANUAL_SCAN_PATHS` allows us to pass a list of additional paths to test.
+- Exported function: `expectNoAccessibilityViolations(page, exclude?)`
+- A thin wrapper around `AxeBuilder` used by `accessibility.spec.ts`.
+- The `exclude` param takes CSS selectors for regions to skip.
 
 ## Known gap: forked PRs fall back to the free ACF plugin
 
