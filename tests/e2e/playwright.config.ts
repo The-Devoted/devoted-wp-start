@@ -19,7 +19,8 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  // No workers override:
+  // It's safe to run these concurrently since the specs only read (no login or data mutation).
   reporter: process.env.CI ? [['html', { open: 'never' }], ['list']] : 'list',
   globalSetup: require.resolve('./global-setup'),
   timeout: 30_000,
