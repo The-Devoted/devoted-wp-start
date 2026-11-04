@@ -7,8 +7,8 @@ const WCAG_TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
 /**
  * Runs an axe-core scan against the current page and returns any WCAG
  * 2.0/2.1 A/AA violations found, without asserting — used where a caller
- * needs to keep going across several pages (e.g. a sitemap crawl) and
- * report everything at the end rather than fail on the first bad page.
+ * needs to keep going across several pages and report everything at the
+ * end rather than fail on the first bad page.
  *
  * `exclude` takes CSS selectors for regions to skip — for third-party
  * plugin markup this suite doesn't own (see README "Known gap" notes)
