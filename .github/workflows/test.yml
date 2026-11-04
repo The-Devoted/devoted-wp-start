@@ -2,8 +2,14 @@ name: E2E Tests
 
 on:
   pull_request:
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
   push:
     branches: [main]
+    paths-ignore:
+      - '**.md'
+      - 'LICENSE'
 
 permissions:
   contents: read
