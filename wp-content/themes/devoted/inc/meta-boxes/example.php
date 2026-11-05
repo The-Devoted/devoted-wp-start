@@ -223,7 +223,9 @@ function devoted_add_example_meta_box() {
 		'high'                              // Priority within its context.
 	);
 }
-add_action( 'add_meta_boxes', 'devoted_add_example_meta_box' );
+// Priority 1 so this field group registers & renders before plugin meta boxes
+// that hook in at the default priority. Doesn't override user settings.
+add_action( 'add_meta_boxes', 'devoted_add_example_meta_box', 1 );
 
 
 /**
