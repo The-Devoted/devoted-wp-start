@@ -40,8 +40,7 @@ jobs:
           MYSQL_ROOT_HOST=%
           EOF
 
-      # Forked PRs don't get repo secrets, so fall back to the placeholder;
-      # global-setup.ts installs the free ACF plugin when auth.json is empty.
+      # Forked PRs don't get repo secrets, so fall back to an empty auth.json.
       - name: Write auth.json
         run: |
           if [ -n "$COMPOSER_AUTH_JSON" ]; then
@@ -54,8 +53,8 @@ jobs:
         run: docker compose up -d --build
 
       # Only runs when the secret is set (same-repo PRs, pushes to main);
-      # forked PRs don't get repo secrets and keep relying on the free-ACF
-      # fallback in global-setup.ts.
+      # forked PRs don't get repo secrets, so any plugin requiring a paid
+      # Composer source is skipped for those runs.
       - name: Install Composer-managed plugins
         if: ${{ env.COMPOSER_AUTH_JSON != '' }}
         run: docker exec wordpress composer update --no-interaction

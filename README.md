@@ -37,9 +37,6 @@ variables.*
 - [Docker](https://www.docker.com) and Docker Compose (Docker Desktop on
   macOS/Windows, or Docker Engine on Linux).
 - [Git](https://git-scm.com/).
-- Credentials for the [ACF Pro](https://www.advancedcustomfields.com/pro/) and
-  [WP Engine](https://wpengine.com/) Composer repositories if you need to install
-  the premium plugins (Advanced Custom Fields Pro).
 
 ### Setup
 
@@ -259,8 +256,8 @@ Plugins are managed with [Composer](https://getcomposer.org/) via
    docker exec wordpress composer update
    ```
 
-Installing the ACF Pro package requires a valid license/auth token (via
-`auth.json`, which is gitignored).
+A plugin sourced from a paid Composer repository (rather than wpackagist)
+requires a valid license/auth token, supplied via `auth.json` (gitignored).
 
 Composer installs plugin files; activating them is a separate step you can do in
 the admin UI or with WP-CLI, e.g.
@@ -280,7 +277,6 @@ the admin UI or with WP-CLI, e.g.
 | Accessibility Checker | `accessibility-checker` | Scans content for accessibility issues in the editor. | |
 | Smush | `wp-smushit` | Image compression/optimization. | |
 | FileBird | `filebird` | Folder organization for the Media Library. | |
-| Advanced Custom Fields PRO | `advanced-custom-fields-pro` | Custom fields for posts, pages, and blocks. | |
 | Melapress Login Security | `melapress-login-security` | Login hardening (lockouts, 2FA, login logging). | |
 | Fluent SMTP | `fluent-smtp` | Configures outbound mail delivery via SMTP/API. | |
 

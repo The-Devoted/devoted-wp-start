@@ -59,33 +59,10 @@ async function ensureWordPressInstalled(): Promise<boolean> {
   );
 }
 
-function hasActiveAcf(): boolean {
-  const active = wp(['plugin', 'list', '--status=active', '--field=name']);
-  return active
-    .split('\n')
-    .map((name) => name.trim())
-    .some((name) => name.startsWith('advanced-custom-fields'));
-}
-
-/**
- * The theme's patterns call ACF's `get_field()`, so without ACF active the
- * site 500s outright. Production, local dev, and same-repo CI runs use ACF
- * Pro via Composer + a WP Engine license (see the README); forked PRs don't
- * get repo secrets, so fall back to the free version from wordpress.org just
- * so the site is up for these smoke tests. This suite doesn't assert on
- * ACF-specific behavior — see the specs README — it just needs *a* working
- * site. Only called for an install this run just created (see
- * `globalSetup`).
- */
-function ensureAcfAvailable(): void {
-  if (hasActiveAcf()) return;
-  wp(['plugin', 'install', 'advanced-custom-fields', '--activate']);
-}
-
 /**
  * Bootstraps a brand-new scratch WordPress install so the suite has
  * something working to run against: activates the theme and every
- * installed plugin, and falls back to free ACF if nothing else provides it.
+ * installed plugin.
  *
  * Only called when `ensureWordPressInstalled` just created the install —
  * an already-installed site (e.g. one refreshed from a remote environment)
@@ -95,7 +72,6 @@ function ensureAcfAvailable(): void {
 function bootstrapFreshInstall(): void {
   wp(['theme', 'activate', 'devoted']);
   wp(['plugin', 'activate', '--all']);
-  ensureAcfAvailable();
 }
 
 export default async function globalSetup(): Promise<void> {
