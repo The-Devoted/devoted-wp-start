@@ -37,14 +37,17 @@ SSH_OPTS=(-i "$DEPLOY_SSH_KEY" -o IdentitiesOnly=yes)
 # ----------------------------
 # Database Pull
 # ----------------------------
-# Exports the remote database with wp-cli (reading credentials straight out
-# of wp-config.php, so none live in this script or .env) and streams it
-# directly into the local Docker WordPress container, keeping a timestamped
-# copy along the way. Then rewrites the site URL for local dev with
-# `wp search-replace`, which — unlike a raw find/replace on the SQL dump —
-# correctly re-serializes PHP-serialized values instead of corrupting them.
+# - Writes a timestamped backup to `backup_db/` in the droplet's home directory.
+# - Exports the remote database with wp-cli, reading credentials from wp-config.php.
+# - Streams that export directly into the local Docker WordPress container.
+# - Generates a local timestamped copy.
+# - Rewrites the site URL for local dev with `wp search-replace`.
 
 db_pull () {
+  echo "📦 Backing up remote DB on the droplet before pulling..."
+  ssh "${SSH_OPTS[@]}" "$REMOTE_SSH_TARGET" \
+    "docker exec wordpress wp db export - --allow-root > backup_db/database_backup_\$(date +%Y-%m-%d_%H.%M.%S).sql"
+
   echo "⬇️  Exporting remote DB via wp-cli and streaming into local container..."
   mkdir -p backups/db
   ssh "${SSH_OPTS[@]}" "$REMOTE_SSH_TARGET" "docker exec wordpress wp db export - --allow-root" \
