@@ -174,11 +174,13 @@ the script or `.env`) and `rsync` for assets.
    bash db_utils.sh dev          # both of the above, in order
    ```
 
-   `db_pull` exports the remote DB with `wp db export`, streams it straight
-   into the local container with `wp db import` (keeping a timestamped copy
-   under `backups/db/`), then runs `wp search-replace` to swap the remote
-   domain for `LOCAL_URL` — safe for PHP-serialized data, unlike a raw
-   find/replace on the SQL dump.
+   `db_pull` first has wp-cli write a timestamped backup to `backup_db/` in
+   the droplet's home directory (outside the container, so it survives the
+   container being rebuilt), then exports the remote DB with `wp db export`,
+   streams it straight into the local container with `wp db import` (keeping
+   a timestamped copy under `backups/db/` here too), then runs
+   `wp search-replace` to swap the remote domain for `LOCAL_URL` — safe for
+   PHP-serialized data, unlike a raw find/replace on the SQL dump.
 
 ### Custom blocks (TypeScript)
 
