@@ -12,6 +12,7 @@ require_once get_parent_theme_file_path( 'inc/post-types.php' );
 require_once get_parent_theme_file_path( 'inc/taxonomies.php' );
 require_once get_parent_theme_file_path( 'inc/meta-boxes.php' );
 require_once get_parent_theme_file_path( 'inc/post-meta.php' );
+require_once get_parent_theme_file_path( 'inc/options-pages.php' );
 
 if ( ! function_exists( 'devoted_setup' ) ) {
 
