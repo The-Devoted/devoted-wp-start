@@ -179,6 +179,32 @@ the script or `.env`) and `rsync` for assets.
    `wp search-replace` to swap the remote domain for `LOCAL_URL` — safe for
    PHP-serialized data, unlike a raw find/replace on the SQL dump.
 
+### Custom Content Scaffolding
+
+The starter kit comes with scaffolding in place for creating the following using WordPress's native tools:
+
+- Custom Post Types
+- Custom Taxonomies
+- Meta Boxes / Custom Fields
+- Options Pages
+- Post Meta
+
+The starter kit has examples for usage of each that you can use to create your
+own custom content. If your project has needs beyond what is shown in demos,
+consider using the ACF plugin (or the pro version, depending on your needs).
+
+See each example file for starter configurations and instructions.
+
+#### Extending from a child theme
+
+A child theme can reference these files' exported constants directly. Meaning
+for example, you add additional fields to an existing options page from a child
+theme.
+
+Caveat: if an option's `sanitize_callback` ever returns a fixed-shape array (as
+the meta-boxes/options examples do), a child theme's extra fields need that
+callback to pass unknown keys through rather than silently drop them.
+
 ### Custom blocks (TypeScript)
 
 Custom Gutenberg blocks are authored in **TypeScript** and compiled with
