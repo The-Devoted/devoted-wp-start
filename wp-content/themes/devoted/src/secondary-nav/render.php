@@ -19,6 +19,11 @@
  * visitor navigate back up regardless of any individual page's listing
  * preference.
  *
+ * Private pages are included in sibling/tree listings only when
+ * devoted_private_pages_visible_in_nav() allows it — gated by the "Show
+ * Private pages in automatic navigation?" Theme Settings toggle and the
+ * current viewer's read_private_pages capability.
+ *
  * `mode` comes from exactly two places, no others: the `mode` attribute
  * (set once per template; defaults to `trail` if absent) and the page
  * currently being viewed's own "Secondary nav style" Document Settings
@@ -51,10 +56,16 @@ $mode          = in_array( $mode_override, array( 'trail', 'full' ), true )
 	? $mode_override
 	: ( $attributes['mode'] ?? 'trail' );
 
+$post_statuses = array( 'publish' );
+if ( devoted_private_pages_visible_in_nav() ) {
+	$post_statuses[] = 'private';
+}
+
 $all_pages = get_pages( array(
 	'child_of'    => $root_id,
 	'sort_column' => 'menu_order, post_title',
 	'sort_order'  => 'ASC',
+	'post_status' => $post_statuses,
 ) );
 
 $children_by_parent = array();
