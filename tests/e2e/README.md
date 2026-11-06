@@ -59,16 +59,6 @@ The following are **not** tested:
 - A thin wrapper around `AxeBuilder` used by `accessibility.spec.ts`.
 - The `exclude` param takes CSS selectors for regions to skip.
 
-## Known gap: forked PRs fall back to the free ACF plugin
-
-The theme needs ACF's `get_field()` or the site 500s. Production/local dev
-use ACF Pro via Composer + a WP Engine license (see root README). CI has
-those credentials in the `COMPOSER_AUTH_JSON` repo secret and runs
-`composer update` for same-repo PRs and pushes to `main`. Forked PRs don't
-get repo secrets, so `global-setup.ts` falls back to installing the free ACF
-plugin when nothing providing `get_field()` is active. This suite doesn't
-assert on ACF-specific behavior, so the fallback is fine for smoke coverage.
-
 ## Running locally
 
 1. `docker compose up -d --build` from the repo root.
@@ -82,7 +72,6 @@ If it isn't, we assume a brand-new scratch container. It runs `wp core install`
 with fixed test credentials, then bootstraps a working site:
 
 - Activates the `devoted` theme and every installed plugin.
-- Ensures ACF is available.
 
 If WordPress is already installed, none of that bootstrapping runs — see [Running Against a Real Environment](#running-against-a-real-environment).
 
