@@ -8,7 +8,7 @@
  * in devoted_register_theme_options() below as the project needs them
  * (see inc/options-pages/example.php for the pattern).
  *
- * ------------------------------------------------------------------------------
+ * ----------------------------------------------------------------------------
  */
 
 // The option name this page's fields will be stored under, as one
