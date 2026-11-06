@@ -19,3 +19,17 @@ function devoted_get_ancestor_ids( $post_ID ) {
 
 	return $ancestors;
 }
+
+
+/**
+ * Private Pages in Navigation
+ *
+ * Checks an Options Page setting and returns true if the setting is checked.
+ */
+
+function devoted_private_pages_visible_in_nav() {
+
+	$settings = devoted_get_theme_settings();
+
+	return $settings['show_private_in_nav'] && current_user_can( 'read_private_pages' );
+}
