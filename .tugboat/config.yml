@@ -1,9 +1,8 @@
 services:
   # Define our webserver service.
   php:
-    # Use PHP 8.1 with Apache to serve the WordPress site.
-    # This syntax pulls in the latest version of PHP 8.1.
-    image: tugboatqa/php:8.1-apache
+    # Use PHP with Apache to serve the WordPress site.
+    image: tugboatqa/php:8.3-apache
 
     # Set this as the default service. This does a few things:
     #   1. Clones the git repository into the service container,
@@ -36,6 +35,11 @@ services:
         - chmod +x wp-cli.phar
         - mv wp-cli.phar /usr/local/bin/wp
 
+        # Install Node.js, needed to build the theme's custom block assets
+        # (the `npm` commands below, in the update and build phases).
+        - curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+        - apt-get install -y nodejs
+
         # Since we use Docker to create our Wordpress environment, we have to
         # give Tugboat an instance of Wordpress to operate in instead of copying
         # our WordPress install as demonstrated in the Tugboat docs.
@@ -63,6 +67,9 @@ services:
         #  previews.
         - composer update --optimize-autoloader
         - composer install --optimize-autoloader
+
+        # Install the theme's JS dependencies, to support compiling custom blocks.
+        - cd ${TUGBOAT_ROOT}/wp-content/themes/devoted && npm ci
 
         # Include our custom WordPress config.
         - cp ${TUGBOAT_ROOT}/.tugboat/wp-config.tugboat.php ${DOCROOT}/wp-config.local.php
@@ -94,6 +101,9 @@ services:
       # and `update` steps, because the results of those are inherited
       # from the base preview.
       build:
+        # Compile the theme's custom blocks.
+        - cd ${TUGBOAT_ROOT}/wp-content/themes/devoted && npm run build
+
         # Flush WordPress Cache.
         - wp cache flush
 

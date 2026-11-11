@@ -132,8 +132,8 @@ function devoted_get_example_settings() {
  * ------------------------------------------------------------------------------
  * Field Render Callbacks
  *
- * One per add_settings_field() call above — each echoes just its own
- * input, not a full table row; the Settings API wraps the section in one.
+ * Add a render callback for each field / add_settings_field() call.
+ * The Settings API wraps the section in a settings table.
  */
 function devoted_render_example_settings_text_field() {
 	$settings = devoted_get_example_settings();
