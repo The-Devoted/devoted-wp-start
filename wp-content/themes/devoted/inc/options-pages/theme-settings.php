@@ -25,6 +25,7 @@ const DEVOTED_THEME_SETTINGS_PAGE_SLUG = 'devoted-theme-settings';
 // Set defaults.
 const DEVOTED_THEME_SETTINGS_DEFAULTS = array(
     'show_private_in_nav' => true,
+    'show_private_label'  => false,
 );
 
 /**
@@ -64,6 +65,14 @@ function devoted_register_theme_settings()
         DEVOTED_THEME_SETTINGS_PAGE_SLUG,                               // Admin slug.
         'devoted_theme_settings_section'                                // Section this field is a part of.
     );
+
+    add_settings_field(
+        'devoted_theme_settings_show_private_label',                 // ID for this field
+        __('Show "Private:" labels on Private pages?', 'devoted'),   // Label for the field
+        'devoted_render_theme_settings_show_private_label',          // Function that renders the field markup.
+        DEVOTED_THEME_SETTINGS_PAGE_SLUG,                             // Admin slug.
+        'devoted_theme_settings_section'                              // Section this field is a part of.
+    );
 }
 add_action('admin_init', 'devoted_register_theme_settings');
 
@@ -80,6 +89,7 @@ function devoted_sanitize_theme_settings($input)
     $input = (array) $input;
     return array(
         'show_private_in_nav' => ! empty($input['show_private_in_nav']),
+        'show_private_label'  => ! empty($input['show_private_label']),
     );
 }
 
@@ -108,6 +118,17 @@ function devoted_render_theme_settings_show_private_in_nav()
 ?>
     <label>
         <input type="checkbox" name="<?php echo esc_attr(DEVOTED_THEME_SETTINGS_OPTION); ?>[show_private_in_nav]" value="1" <?php checked($settings['show_private_in_nav']); ?> />
+        <?php esc_html_e('Enabled', 'devoted'); ?>
+    </label>
+<?php
+}
+
+function devoted_render_theme_settings_show_private_label()
+{
+    $settings = devoted_get_theme_settings();
+?>
+    <label>
+        <input type="checkbox" name="<?php echo esc_attr(DEVOTED_THEME_SETTINGS_OPTION); ?>[show_private_label]" value="1" <?php checked($settings['show_private_label']); ?> />
         <?php esc_html_e('Enabled', 'devoted'); ?>
     </label>
 <?php
