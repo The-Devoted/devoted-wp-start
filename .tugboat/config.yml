@@ -35,6 +35,11 @@ services:
         - chmod +x wp-cli.phar
         - mv wp-cli.phar /usr/local/bin/wp
 
+        # Install Node.js, needed to build the theme's custom block assets
+        # (the `npm` commands below, in the update and build phases).
+        - curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+        - apt-get install -y nodejs
+
         # Since we use Docker to create our Wordpress environment, we have to
         # give Tugboat an instance of Wordpress to operate in instead of copying
         # our WordPress install as demonstrated in the Tugboat docs.
@@ -62,6 +67,15 @@ services:
         #  previews.
         - composer update --optimize-autoloader
         - composer install --optimize-autoloader
+
+        # Install the theme's JS dependencies, so its custom blocks can be
+        # compiled. Lives here rather than in init, so it reruns whenever
+        # package.json/the lockfile changes between pushes, matching how
+        # composer install/update is handled above. A preview built from a
+        # Base Preview inherits this phase's result rather than rerunning
+        # it — see the npm run build step in the build phase below, which
+        # always reruns regardless.
+        - cd ${TUGBOAT_ROOT}/wp-content/themes/devoted && npm ci
 
         # Include our custom WordPress config.
         - cp ${TUGBOAT_ROOT}/.tugboat/wp-config.tugboat.php ${DOCROOT}/wp-config.local.php
@@ -93,6 +107,13 @@ services:
       # and `update` steps, because the results of those are inherited
       # from the base preview.
       build:
+        # Compile the theme's custom blocks from its already-installed JS
+        # dependencies (see npm ci in the update phase above). This phase
+        # always runs, including for previews built from a Base Preview
+        # (which skip init/update and only run build), so a preview's
+        # compiled block output always matches its own checked-out source.
+        - cd ${TUGBOAT_ROOT}/wp-content/themes/devoted && npm run build
+
         # Flush WordPress Cache.
         - wp cache flush
 
