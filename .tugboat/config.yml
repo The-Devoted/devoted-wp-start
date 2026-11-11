@@ -68,13 +68,7 @@ services:
         - composer update --optimize-autoloader
         - composer install --optimize-autoloader
 
-        # Install the theme's JS dependencies, so its custom blocks can be
-        # compiled. Lives here rather than in init, so it reruns whenever
-        # package.json/the lockfile changes between pushes, matching how
-        # composer install/update is handled above. A preview built from a
-        # Base Preview inherits this phase's result rather than rerunning
-        # it — see the npm run build step in the build phase below, which
-        # always reruns regardless.
+        # Install the theme's JS dependencies, to support compiling custom blocks.
         - cd ${TUGBOAT_ROOT}/wp-content/themes/devoted && npm ci
 
         # Include our custom WordPress config.
@@ -107,11 +101,7 @@ services:
       # and `update` steps, because the results of those are inherited
       # from the base preview.
       build:
-        # Compile the theme's custom blocks from its already-installed JS
-        # dependencies (see npm ci in the update phase above). This phase
-        # always runs, including for previews built from a Base Preview
-        # (which skip init/update and only run build), so a preview's
-        # compiled block output always matches its own checked-out source.
+        # Compile the theme's custom blocks.
         - cd ${TUGBOAT_ROOT}/wp-content/themes/devoted && npm run build
 
         # Flush WordPress Cache.
