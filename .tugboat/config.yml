@@ -1,9 +1,8 @@
 services:
   # Define our webserver service.
   php:
-    # Use PHP 8.1 with Apache to serve the WordPress site.
-    # This syntax pulls in the latest version of PHP 8.1.
-    image: tugboatqa/php:8.1-apache
+    # Use PHP with Apache to serve the WordPress site.
+    image: tugboatqa/php:8.3-apache
 
     # Set this as the default service. This does a few things:
     #   1. Clones the git repository into the service container,
